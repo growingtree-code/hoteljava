@@ -58,8 +58,8 @@ https://templatemo.com/tm-579-cyborg-gaming
           <div class="col-12">
             <nav class="main-nav">
               <!-- ***** Logo Start ***** -->
-              <a href="index.jsp" class="logo">
-                <img src="assets/images/logo.png" alt="" />
+              <a href="${pageContext.request.contextPath }/index" class="logo">
+                <img src="assets/images/hotelJAVA.png" alt="" />
               </a>
               <!-- ***** Logo End ***** -->
               <!-- ***** Search End ***** -->
@@ -78,12 +78,12 @@ https://templatemo.com/tm-579-cyborg-gaming
               <!-- ***** Search End ***** -->
               <!-- ***** Menu Start ***** -->
               <ul class="nav">
-                <li><a href="index.jsp" class="active">Home</a></li>
-                <li><a href="${pageContext.request.contextPath }/browse.jsp">Browse</a></li>
-                <li><a href="details.jsp">Details</a></li>
-                <li><a href="streams.jsp">Streams</a></li>
+                <li><a href="${pageContext.request.contextPath }/index" class="active">Home</a></li>
+                <li><a href="${pageContext.request.contextPath }/browse">Browse</a></li>
+                <li><a href="${pageContext.request.contextPath }/details">Details</a></li>
+                <li><a href="${pageContext.request.contextPath }/streams">Streams</a></li>
                 <li>
-                  <a href="profile.jsp"
+                  <a href="${pageContext.request.contextPath }/profile"
                     >Profile <img src="assets/images/profile-header.jpg" alt=""
                   /></a>
                 </li>
