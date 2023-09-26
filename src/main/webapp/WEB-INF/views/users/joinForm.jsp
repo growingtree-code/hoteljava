@@ -16,7 +16,7 @@ $(document).ready(function() {
 	    	$("#idResult").text(data);
 	  });
 	});
-	$("#join").click(function() {		
+	$("#join").click(function() {
 		if($("#idResult").text().trim()=="사용가능"){
 			$("form").submit();
 		}else{
@@ -42,9 +42,9 @@ $(document).ready(function() {
 		type:<input type="radio" name="type" value="1">구매자
 				<input type="radio" name="type" value="2">판매자
 				<input type="radio" name="type" value="0">관리자<br/>
-		
-		<input type="reset" value="취소">
-		<input type="button" value="가입" id="join"> <br />
+
+		<button type="button" onClick="location.href='/users/loginForm'">취소</button>
+		<input type="button" value="가입" id = "join"> <br />
 	</form>
 	
 </body>
