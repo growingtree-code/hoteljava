@@ -10,6 +10,22 @@ public class HomeController {
     public String browse(){
         return "browse";
     }
+    /* 내 예약 내역 */
+    @GetMapping(value ="/myReservation")
+    public String myReservation(){
+        return "order/MyReservation";
+    }
+    /* 내 장바구니 */
+    @GetMapping(value ="/myCart")
+    public String myCart(){
+        return "order/MyCart";
+    }
+    /* 결제 페이지 */
+    @GetMapping(value ="/payment")
+    public String payment(){
+        return "payment/Payment";
+    }
+
 
     @GetMapping(value ="/details")
     public String details(){
