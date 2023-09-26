@@ -109,7 +109,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                 <div class="col-lg-7">
                   <div class="header-text">
                     <h1>Shop</h1>
-                    <a href="${pageContext.request.contextPath }/member/loginForm">로그인 </a>
+                    <a href="${pageContext.request.contextPath }/users/loginForm">로그인 </a>
                     <h6>Welcome To Cyborg</h6>
                     <h4><em>Browse</em> Our Popular Games Here</h4>
                     <div class="main-button">

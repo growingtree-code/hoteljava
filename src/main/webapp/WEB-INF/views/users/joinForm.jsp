@@ -10,8 +10,8 @@
 <script>
 
 $(document).ready(function() {
-	$("#idCheck").click(function() {
-		$.post( "/member/idCheck", { id: $("#id").val()} )
+	$("#emailCheck").click(function() {
+		$.post( "/users/emailCheck", { email: $("#email").val()} )
 	    .done(function( data ) {
 	    	$("#idResult").text(data);
 	  });
@@ -29,23 +29,19 @@ $(document).ready(function() {
 </head>
 <body>
 	<h3>회원가입</h3>
-	<form action="${pageContext.request.contextPath }/member/join" method="post">
+	<form action="${pageContext.request.contextPath }/users/join" method="post">
 		
-		id: <input type="text" name="id" id="id"> 
-		<input type="button" id="idCheck" value="id 중복체크"> 
+		email: <input type="text" name="email" id="email">
+		<input type="button" id="emailCheck" value="email 중복체크">
 			<span id="idResult"></span> <br>
 		
 		pwd:<input type="password" name="pwd"><br /> 
 		
-		name:<input	type="text" name="name"><br /> 
-		
-		tel:<input type="text"name="tel"><br /> 
-		
-		address:<input type="text"name="address"><br /> 
+		name:<input	type="text" name="name"><br />
 		
 		type:<input type="radio" name="type" value="1">구매자
 				<input type="radio" name="type" value="2">판매자
-				<input type="radio" name="type" value="3">관리자<br/> 
+				<input type="radio" name="type" value="0">관리자<br/>
 		
 		<input type="reset" value="취소">
 		<input type="button" value="가입" id="join"> <br />

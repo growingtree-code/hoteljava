@@ -38,7 +38,7 @@ public class AdminController {
 	@RequestMapping(value = "/admin/addCategory")
 	public String addCategory(Category c, @RequestParam(value = "type") int type) {
 		service.addCategory(c, type);
-		return "member/main";
+		return "users/main";
 	}
 	
 	

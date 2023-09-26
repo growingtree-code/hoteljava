@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.users.UsersMapper">
+
+	<resultMap id="UsersResult" type="com.example.demo.users.Users">
+		<result column="email" property="email" />
+		<result column="pwd" property="pwd" />
+		<result column="name" property="name" />
+		<result column="type" property="type" />
+	</resultMap>
+
+	<select id="select" resultMap="UsersResult" parameterType="String">
+		select * from users where email = #{email}
+	</select>
+	
+	<insert id="insert" parameterType="com.example.demo.users.Users">
+		insert into users values(Users_seq.NEXTVAL,#{email}, #{pwd}, #{name}, 0, #{type})
+	</insert>
+	
+	<update id="update" parameterType="com.example.demo.users.Users">
+		update users set pwd=#{pwd}, name=#{name} where email=#{email}
+	</update>
+	
+	<delete id="delete" parameterType="String">
+		delete users where email=#{email}
+	</delete>
+</mapper>
