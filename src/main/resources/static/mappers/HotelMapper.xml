@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.hotel.HotelMapper">
+	<resultMap type="com.example.demo.hotel.Hotel" id="HotelResult">
+		<result column="hotel_id" property="hotel_id" />
+		<result column="hotel_name" property="hotel_name" />
+		<result column="hotel_addres" property="hotel_addres" />
+		<result column="hotel_phone" property="hotel_phone" />
+		<result column="hotel_img" property="hotel_img" />
+		<result column="hotel_category" property="hotel_category" />
+	</resultMap>
+	<insert id="insert" parameterType="com.example.demo.hotel.Hotel">
+		insert into Hotel 
+		values(#{hotel_id}, #{hotel_name}, #{hotel_addres}, #{hotel_phone}, #{hotel_img}, #{hotel_category}) 
+	</insert>
+	
+	<select id="selectByNum" parameterType="int" 
+	resultMap="HotelResult">
+		select * from Hotel where hotel_id=#{hotel_id}
+	</select>
+	
+	<select id="selectByName" parameterType="String" 
+	resultMap="HotelResult">
+		select * from Hotel where hotel_name=#{hotel_name}  order by hotel_id
+	</select>
+	
+	<select id="selectAll" resultMap="HotelResult">
+		select * from Hotel order by hotel_id
+	</select>
+	
+	<update id="update" parameterType="com.example.demo.hotel.Hotel">
+		update Hotel set hotel_name=#{hotel_name}, hotel_addres=#{hotel_addres}, hotel_phone=#{hotel_phone},
+		hotel_img=#{hotel_img}, hotel_category=#{hotel_category} where hotel_id=#{hotel_id}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete Hotel where hotel_id=#{hotel_id}
+	</delete>
+	
+	<select id="getNum" resultType="int">
+		select Hotel_seq.nextval from dual
+	</select>
+
+</mapper>
