@@ -112,11 +112,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                         <div class="item">
                             <ul>
                                 <li>
-                                    <img
-                                            src="assets/images/game-02.jpg"
-                                            alt=""
-                                            class="templatemo-item"
-                                    />
+                                    <img src="assets/images/game-02.jpg" alt="" class="templatemo-item"/>
                                 </li>
                                 <li>
                                     <h4>호텔명</h4>
@@ -153,6 +149,7 @@ https://templatemo.com/tm-579-cyborg-gaming
         </div>
     </div>
 </div>
+</div>
 
 <footer>
     <div class="container">
@@ -163,12 +160,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                     reserved.
 
                     <br />Design:
-                    <a
-                            href="https://templatemo.com"
-                            target="_blank"
-                            title="free CSS templates"
-                    >TemplateMo</a
-                    >
+                    <a href="https://templatemo.com" target="_blank" title="free CSS templates">TemplateMo</a>
                     Distributed By
                     <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
                 </p>

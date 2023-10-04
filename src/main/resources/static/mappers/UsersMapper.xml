@@ -14,6 +14,9 @@
 	<select id="select" resultMap="UsersResult" parameterType="String">
 		select * from users where email = #{email}
 	</select>
+	<select id="selectUserIdByEmail" parameterType="String">
+		select user_id from users where email = #{email}
+	</select>
 	
 	<insert id="insert" parameterType="com.example.demo.users.Users">
 		insert into users values(Users_seq.NEXTVAL,#{email}, #{pwd}, #{name}, 0, #{type})

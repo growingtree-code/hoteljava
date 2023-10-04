@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.payment.PaymentMapper">
+	<resultMap type="com.example.demo.payment.Payment" id="PaymentResult">
+		<result column="payment_id" property="payment_id" />
+		<result column="payment_method" property="payment_method" />
+		<result column="payment_total_price" property="payment_total_price" />
+		<result column="payment_flag" property="payment_flag" />
+		<result column="payment_time" property="payment_time" />
+		<result column="payment_uid" property="payment_uid" />
+	</resultMap>
+
+	<insert id="insertPayment" parameterType="com.example.demo.payment.Payment">
+		insert into Payment
+		values(#{payment_id}, #{payment_method}, #{payment_total_price}, #{payment_flag},
+			   #{payment_time}, #{payment_uid})
+	</insert>
+
+	<select id="selectByPaymentId" parameterType="int"
+			resultMap="PaymentResult">
+		select * from Payment where payment_id=#{payment_id}
+	</select>
+
+	<!--	<update id="update" parameterType="com.example.demo.seller.Product">-->
+	<!--		update shopproduct set name=#{name}, price=#{price}, info=#{info},-->
+	<!--							   quantity=#{quantity} where num=#{num}-->
+	<!--	</update>-->
+
+	<delete id="deletePayment" parameterType="int">
+		delete Payment where payment_id=#{payment_id}
+	</delete>
+
+	<select id="getNum" resultType="int">
+		select Payment_seq.nextval from dual
+	</select>
+</mapper>

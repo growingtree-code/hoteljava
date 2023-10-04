@@ -12,4 +12,7 @@ public interface UsersMapper {
 	void update(Users u);
 
 	void delete(String id);
+
+	//이재혁
+	int selectUserIdByEmail(String id);
 }

@@ -24,4 +24,8 @@ public class UsersService {
 	public void delUsers(String id) {
 		mapper.delete(id);
 	}
+
+	public int searchUserIdByEmail(String id) {
+		return mapper.selectUserIdByEmail(id);
+	}
 }
