@@ -82,11 +82,13 @@ https://templatemo.com/tm-579-cyborg-gaming
                 <li><a href="${pageContext.request.contextPath }/browse">Browse</a></li>
                 <li><a href="${pageContext.request.contextPath }/details">Details</a></li>
                 <li><a href="${pageContext.request.contextPath }/streams">Streams</a></li>
-                <li>
-                  <a href="${pageContext.request.contextPath }/profile"
-                    >Profile <img src="assets/images/profile-header.jpg" alt=""
-                  /></a>
-                </li>
+                <li><a href="${pageContext.request.contextPath }/users/loginForm">
+                  로그인<img src="assets/images/profile-header.jpg" alt=""/></a></li>
+<%--                <li>--%>
+<%--                  <a href="${pageContext.request.contextPath }/profile"--%>
+<%--                    >Profile <img src="assets/images/profile-header.jpg" alt=""--%>
+<%--                  /></a>--%>
+<%--                </li>--%>
               </ul>
               <a class="menu-trigger">
                 <span>Menu</span>
@@ -108,8 +110,7 @@ https://templatemo.com/tm-579-cyborg-gaming
               <div class="row">
                 <div class="col-lg-7">
                   <div class="header-text">
-                    <h1>Shop</h1>
-                    <a href="${pageContext.request.contextPath }/users/loginForm">로그인 </a>
+
                     <h6>Welcome To Cyborg</h6>
                     <h4><em>Browse</em> Our Popular Games Here</h4>
                     <div class="main-button">

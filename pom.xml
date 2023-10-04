@@ -18,6 +18,13 @@
 		<java.version>11</java.version>
 	</properties>
 	<dependencies>
+		<!--for auto reboot-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<!--for auto reboot end-->
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
