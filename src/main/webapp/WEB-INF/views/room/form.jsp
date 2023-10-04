@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -96,16 +98,16 @@
         <div class="col-lg-12">
           <div class="page-content">
             <div class="heading-section" style="display: flex; justify-content: space-around;">
-              <h4>호텔 등록</h4>
-              <h4><a href="${pageContext.request.contextPath }/room/form"><em style="text-decoration: none;">객실 등록</em></a></h4>
+              <h4><a href="${pageContext.request.contextPath }/hotel/form"><em style="text-decoration: none;">호텔 등록</em></a></h4>
+              <h4>객실 등록</h4>
             </div>
             <div class="row">
               <div class="col-lg-12">
                 <form
-                  action="${pageContext.request.contextPath }/hotel/add"
+                  action="${pageContext.request.contextPath }/room/add"
                   method="post"
                   enctype="multipart/form-data"
-                >
+                >                  
                   <div class="main-profile">
                     <div class="row">
                       <div class="align-self-center">
@@ -113,50 +115,58 @@
                           <div class="item">
                             <ul>
                               <li>
-                                <h5 style="display: inline-block; width: 10vw">카테고리</h5>
+                                <h5 style="display: inline-block; width: 10vw">호텔</h5>
                                 <select
-                                  id="category"
-                                  name="hotel_category"
+                                  id="hotel"
+                                  name="hotel_id"
                                   style="color: #bbb; border: none; border-radius: 23px; background-color: #27292a"
                                 >
-                                  <option value="1" selected="selected">호텔/리조트</option>
-                                  <option value="2">펜션/풀빌라</option>
-                                  <option value="3">모텔</option>
-                                  <option value="4">게스트하우스</option>
+                                  <c:forEach items="${hotellist }" var="h">
+                                    <option value="${h.hotel_id }">${h.hotel_name }</option>
+                                  </c:forEach>
                                 </select>
                               </li>
                               <li>
-                                <h5 style="display: inline-block; width: 10vw">호텔명</h5>
+                                <h5 style="display: inline-block; width: 10vw">객실명</h5>
                                 <input
                                   type="text"
-                                  name="hotel_name"
+                                  name="room_name"
                                   style="color: #bbb; border: none; border-radius: 23px; background-color: #27292a"
-                                  placeholder="호텔명을 입력하세요"
+                                  placeholder="객실명을 입력하세요"
                                 />
                               </li>
                               <li>
-                                <h5 style="display: inline-block; width: 10vw">주소</h5>
+                                <h5 style="display: inline-block; width: 10vw">객실유형</h5>
                                 <input
-                                  type="text"
-                                  name="hotel_addres"
+                                  type="number"
+                                  name="room_type"
                                   style="color: #bbb; border: none; border-radius: 23px; background-color: #27292a"
-                                  placeholder="주소를 입력하세요"
+                                  placeholder="몇인실인지 입력하세요"
                                 /><br />
                               </li>
                               <li>
-                                <h5 style="display: inline-block; width: 10vw">전화번호</h5>
+                                <h5 style="display: inline-block; width: 10vw">객실정보</h5>
                                 <input
                                   type="text"
-                                  name="hotel_phone"
+                                  name="room_info"
                                   style="color: #bbb; border: none; border-radius: 23px; background-color: #27292a"
-                                  placeholder="전화번호를 입력하세요"
+                                  placeholder="객실정보를 입력하세요"
+                                /><br />
+                              </li>
+                              <li>
+                                <h5 style="display: inline-block; width: 10vw">가격</h5>
+                                <input
+                                  type="number"
+                                  name="price"
+                                  style="color: #bbb; border: none; border-radius: 23px; background-color: #27292a"
+                                  placeholder="가격을 입력하세요"
                                 /><br />
                               </li>
                               <li>
                                 <h5 style="display: inline-block; width: 10vw">이미지</h5>
                                 <input
                                   type="file"
-                                  name="hotel_imgfile"
+                                  name="room_imgfile"
                                   style="color: #bbb; border: none; background-color: #27292a"
                                 /><br />
                               </li>

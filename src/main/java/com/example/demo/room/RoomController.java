@@ -1,4 +1,4 @@
-package com.example.demo.hotel;
+package com.example.demo.room;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,19 +17,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.example.demo.room.Room;
-import com.example.demo.room.RoomService;
+import com.example.demo.hotel.Hotel;
+import com.example.demo.hotel.HotelService;
 
 @Controller
-public class HotelController {
+public class RoomController {
 
 	@Autowired
-	private HotelService service;
-	
+	private RoomService service;
 	@Autowired
-	private RoomService roomservice;
+	private HotelService hotelservice;
 	
-	public static String basePath = "C:\\hotelimg\\";
+	public static String basePath = "C:\\roomimg\\";
 	
 	
 	public String saveImg(int num, MultipartFile file) {
@@ -53,50 +52,53 @@ public class HotelController {
 		return fileName;
 	}
 	
-	@RequestMapping(value = "/hotel/form")
-	public void form() {
-	}
-	
-	@RequestMapping("/hotel/hotelList")
-	public ModelAndView hotelList(HttpServletRequest req) {
+	@RequestMapping(value = "/room/form")
+	public ModelAndView form(HttpServletRequest req) {
 		
-		ModelAndView mav = new ModelAndView("hotel/hotelList");
+		ModelAndView mav = new ModelAndView("room/form");
 		
-		ArrayList<Hotel> list = (ArrayList<Hotel>) service.getHotelAll();
-		mav.addObject("list", list);
+		ArrayList<Hotel> hotellist = (ArrayList<Hotel>) hotelservice.getHotelAll();
+		mav.addObject("hotellist",hotellist);
 		
 		return mav;
 	}
 	
-	@RequestMapping(value="/hotel/add")
-	public String add(Hotel h) {
+//	@RequestMapping("/hotel/hotelList")
+//	public ModelAndView hotelList(HttpServletRequest req) {
+//		
+//		ModelAndView mav = new ModelAndView("hotel/hotelList");
+//		
+//		ArrayList<Room> list = (ArrayList<Room>) service.getHotelAll();
+//		mav.addObject("list", list);
+//		
+//		return mav;
+//	}
+	
+	@RequestMapping(value="/room/add")
+	public String add(Room r) {
 		int num = service.getNum();
-		h.setHotel_id(num);
+		r.setRoom_id(num);
 		
-		String filename = saveImg(num, h.getHotel_imgfile());
-		h.setHotel_img(filename);
-		service.addHotel(h);
-		System.out.println(h);
-		return "redirect:hotelList";
+		String filename = saveImg(num, r.getRoom_imgfile());
+		r.setRoom_img(filename);
+		service.addRoom(r);
+		System.out.println(r);
+		return "redirect:/hotel/hotelList";
 	}
 	
-	@RequestMapping(value="/hotel/detail")
-	public ModelAndView detail(int num) {
-				
-		ModelAndView mav = new ModelAndView("hotel/detail");
-		
-		Hotel h = service.getHotelByNum(num);
-		
-		ArrayList<Room> roomlist = (ArrayList<Room>) roomservice.getRoomByHotelNum(num);
-		
-		mav.addObject("h", h);
-		mav.addObject("roomlist",roomlist);
-		
-		return mav;
-	}
+//	@RequestMapping(value="/hotel/detail")
+//	public ModelAndView detail(int num) {
+//				
+//		ModelAndView mav = new ModelAndView("hotel/detail");
+//		
+//		Room h = service.getHotelByNum(num);
+//		mav.addObject("h", h);
+//		
+//		return mav;
+//	}
 	
 	
-	@RequestMapping("/hotel/img")
+	@RequestMapping("/room/img")
 	public ResponseEntity<byte[]> getImg(String filename, int num) {
 		
 		String path = basePath + num + "\\" + filename;

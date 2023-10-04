@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.room.RoomMapper">
+	<resultMap type="com.example.demo.room.Room" id="RoomResult">
+		<result column="room_id" property="room_id" />
+		<result column="hotel_id" property="hotel_id" />
+		<result column="room_type" property="room_type" />
+		<result column="room_info" property="room_info" />
+		<result column="price" property="price" />
+		<result column="room_img" property="room_img" />
+		<result column="room_name" property="room_name" />
+	</resultMap>
+	<insert id="insert" parameterType="com.example.demo.room.Room">
+		insert into Room 
+		values(#{room_id}, #{hotel_id}, #{room_type}, #{room_info}, #{price}, #{room_img}, #{room_name}) 
+	</insert>
+	
+	<select id="selectByNum" parameterType="int" 
+	resultMap="RoomResult">
+		select * from Room where room_id=#{room_id}
+	</select>
+	
+	<select id="selectByHotelNum" parameterType="int" 
+	resultMap="RoomResult">
+		select * from Room where hotel_id=#{hotel_id} order by room_type
+	</select>
+	
+	<select id="selectAll" resultMap="RoomResult">
+		select * from Room order by room_id
+	</select>
+	
+	<update id="update" parameterType="com.example.demo.room.Room">
+		update Room set room_type=#{room_type}, room_info=#{room_info}, price=#{price},
+		room_img=#{room_img}, room_name=#{room_name} where room_id=#{room_id}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete Room where room_id=#{room_id}
+	</delete>
+	
+	<select id="getNum" resultType="int">
+		select Room_seq.nextval from dual
+	</select>
+
+</mapper>

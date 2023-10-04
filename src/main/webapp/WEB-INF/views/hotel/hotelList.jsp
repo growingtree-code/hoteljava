@@ -72,7 +72,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                     <li><a href="${pageContext.request.contextPath }/index" class="active">Home</a></li>
                     <li><a href="${pageContext.request.contextPath }/browse">Browse</a></li>
                     <li><a href="${pageContext.request.contextPath }/details">Details</a></li>
-                    <li><a href="${pageContext.request.contextPath }/streams">Streams</a></li>
+                    <li><a href="${pageContext.request.contextPath }/hotel/form">호텔등록</a></li>
                     <li>
                       <a href="${pageContext.request.contextPath }/profile">Profile <img src="../assets/images/profile-header.jpg" alt=""
                       /></a>
@@ -106,16 +106,30 @@ https://templatemo.com/tm-579-cyborg-gaming
                   <c:forEach var="h" items="${list }">
                   	<div class="item">
                       <div class="thumb">
-                        <img src="${pageContext.request.contextPath }/hotel/img?filename=${h.hotel_img}&num=${h.hotel_id}" alt="">
-                        <div class="hover-effect">
-                          <h6>2.4K Streaming</h6>
-                        </div>
+                      	<a href="${pageContext.request.contextPath }/hotel/detail?num=${h.hotel_id}">
+                          <img src="${pageContext.request.contextPath }/hotel/img?filename=${h.hotel_img}&num=${h.hotel_id}" width="219px" height="370px" alt="">
+                          <div class="hover-effect">
+                            <h6>살펴보기</h6>
+                          </div>
+                        </a>
                       </div>
-                      <h4>CS-GO<br><span>249K Downloads</span></h4>
-                      <ul>
-                        <li><i class="fa fa-star"></i> 4.8</li>
-                        <li><i class="fa fa-download"></i> 2.3M</li>
-                      </ul>
+                      <h4>${h.hotel_name}<br>
+                      <span>
+                      	<c:choose>
+                      		<c:when test="${h.hotel_category==1 }">
+                      		호텔/리조트
+                      		</c:when>
+                      		<c:when test="${h.hotel_category==2 }">
+                      		펜션/풀빌라
+                      		</c:when>
+                      		<c:when test="${h.hotel_category==3 }">
+                      		모텔
+                      		</c:when>
+                      		<c:when test="${h.hotel_category==4 }">
+                      		게스트하우스
+                      		</c:when>
+                      	</c:choose>
+                      </span></h4>
                     </div>
                   </c:forEach>
                 </div>
