@@ -26,6 +26,11 @@
 		select * from Hotel where hotel_name=#{hotel_name}  order by hotel_id
 	</select>
 	
+	<select id="selectByCategory" parameterType="int" 
+	resultMap="HotelResult">
+		select * from Hotel where hotel_category=#{hotel_category}  order by hotel_id
+	</select>
+	
 	<select id="selectAll" resultMap="HotelResult">
 		select * from Hotel order by hotel_id
 	</select>

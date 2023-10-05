@@ -74,6 +74,18 @@ public class HotelController {
 		return mav;
 	}
 	
+	@RequestMapping("/hotel/category")
+	public ModelAndView hotelCategory(int cate) {
+		
+		ModelAndView mav = new ModelAndView("hotel/category");
+		
+		ArrayList<Hotel> catelist = (ArrayList<Hotel>) service.getHotelByCategory(cate);
+		mav.addObject("catelist", catelist);
+		mav.addObject("cate",cate);
+		
+		return mav;
+	}
+	
 	@RequestMapping(value="/hotel/add")
 	public String add(Hotel h) {
 		int num = service.getNum();

@@ -23,6 +23,10 @@ public class HotelService {
 		return mapper.selectByName(name);
 	}
 	
+	public List getHotelByCategory(int cate) {
+		return mapper.selectByCategory(cate);
+	}
+	
 	public List getHotelAll() {
 		return mapper.selectAll();
 	}

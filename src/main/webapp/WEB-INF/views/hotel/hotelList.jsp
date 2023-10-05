@@ -93,6 +93,61 @@ https://templatemo.com/tm-579-cyborg-gaming
     <div class="row">
       <div class="col-lg-12">
         <div class="page-content">
+        
+          <!-- ***** Category Start ***** -->
+          <div class="live-stream" style="padding:15px; margin: 0 0 60px 0;">
+            <div class="row justify-content-evenly">
+                <div class="col-lg-1">
+                  <div>
+                    <a href="${pageContext.request.contextPath }/hotel/category?cate=1">
+                      <div class="thumb">
+                        <img src="../assets/images/hotel.png" alt="">
+                      </div>
+                      <div class="down-content" style="text-align: center;">
+                        <p style="color: white; font-size: 11px;">호텔/리조트</p>
+                      </div>
+                    </a> 
+                  </div>
+                </div>
+                <div class="col-lg-1">
+                  <div>
+                    <a href="${pageContext.request.contextPath }/hotel/category?cate=2">
+                      <div class="thumb">
+                        <img src="../assets/images/pool.png" alt="">
+                      </div>
+                      <div class="down-content" style="text-align: center;">
+                        <p style="color: white; font-size: 11px;">펜션/풀빌라</p>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-lg-1">
+                  <div>
+                    <a href="${pageContext.request.contextPath }/hotel/category?cate=3">
+                      <div class="thumb">
+                        <img src="../assets/images/motel.png" alt="">
+                      </div>
+                      <div class="down-content" style="text-align: center;">
+                        <p style="color: white; font-size: 11px;">모텔</p>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-lg-1">
+                  <div>
+                    <a href="${pageContext.request.contextPath }/hotel/category?cate=4">
+                      <div class="thumb">
+                        <img src="../assets/images/guesthouse.png" alt="">
+                      </div>
+                      <div class="down-content" style="text-align: center;">
+                        <p style="color: white; font-size: 11px;">게스트 하우스</p>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+            </div>
+          </div>
+          <!-- ***** Category End ***** -->
 
           <!-- ***** Featured Games Start ***** -->
           <div class="row">
