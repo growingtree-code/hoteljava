@@ -30,14 +30,24 @@
 		  });
 		});
 		$("#join").click(function() {
-			if($("#idResult").text().trim()=="사용가능"){
+			if($("#idResult").text().trim()=="사용가능한 이메일입니다."){
 				$("form").submit();
 			}else{
-				alert("id 중복체크 먼저");
+				alert("이메일 중복체크 먼저진행해주세요");
 			}
 		});
 	});
 	</script>
+	<style>
+		#emailCheck{
+			background-color: #744285;
+			color: #fff;
+		}
+		#emailCheck:hover{
+			background-color: white;
+			color:#744285 ;
+		}
+	</style>
 </head>
 <body>
 	<!-- loding view -->
@@ -98,7 +108,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="page-content">
-					<div class="heading-section">
+					<div class="heading-section" style="justify-content: center; display: flex">
 						<h4>회원가입</h4>
 					</div>
 					<!-- ***** Banner Start ***** -->
@@ -112,15 +122,21 @@
 									</div>
 										<form id = "join_btn" action="${pageContext.request.contextPath }/users/join" method="post">
 											<div class="main-info header-text">
-												<div class="item">
+												<div class="item" style="padding-top: 10%;">
 													<ul>
 														<li>
 															<h5 style="display: inline-block; width: 10vw;">이메일</h5>
 															<input type="text" name="email" id="email" placeholder="이메일을 입력해주세요."
 																   style="color:#bbb; border: none; border-radius: 23px; background-color: #27292a;">
-															<input type="button" id="emailCheck" value="email 중복체크">
-															<span id="idResult"></span> <br>
+															<input type="button" id="emailCheck" name="emailCheck" value="이메일 중복체크"
+																   style="
+																	font-size: 13px;
+																	font-weight: 600;
+																	padding: 10px;
+																	border-radius: 40px;
+																	">
 														</li>
+														<div id="idResult" style="color: #b28df5; font-weight: bold;display:flex; justify-content: center;"></div> <br>
 														<li>
 															<h5 style="display: inline-block; width: 10vw;">비밀번호</h5>
 															<input type="password" name="pwd"  placeholder="비밀번호을 입력해주세요."
@@ -143,7 +159,7 @@
 <%--													<a href="javascript:login_btn.submit();">로그인</a>--%>
 
 													<div class="main-button" style="display: inline;">
-														<a href="${pageContext.request.contextPath }/users/loginForm"style="font-weight: bold;margin-left: 35%; margin-right: 5%;">취소</a>
+														<a href="${pageContext.request.contextPath }/users/loginForm"style="font-weight: bold;margin-left: 55%; margin-right: 5%;">취소</a>
 													</div>
 													<div class="main-border-button" style="display: inline;">
 														<a href=" javascript:join_btn.submit();" style="font-weight: bold; margin-top: 30px">가입</a>

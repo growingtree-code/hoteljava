@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -35,6 +36,27 @@ TemplateMo 579 Cyborg Gaming
 https://templatemo.com/tm-579-cyborg-gaming
 
 -->
+    <style>
+      .dropdown{
+        position : relative;
+        display : inline-block;
+      }
+
+      .dropdown-content{
+        display : none;
+        position : absolute;
+        z-index : 1; /*다른 요소들보다 앞에 배치*/
+      }
+
+      .dropdown-content a{
+        display : block;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+    </style>
   </head>
 
   <body>
@@ -111,10 +133,11 @@ https://templatemo.com/tm-579-cyborg-gaming
                 <div class="col-lg-7">
                   <div class="header-text">
 
-                    <h6>Welcome To Cyborg</h6>
-                    <h4><em>Browse</em> Our Popular Games Here</h4>
+                    <h6>Welcome To Hotel JAVA</h6>
+                    <h4><em>Browse</em> Our Popular Hotels & Rooms Here</h4>
                     <div class="main-button">
-                      <a href="browse.jsp">Browse Now</a>
+<%--                      <a href="browse.jsp">Browse Now</a>--%>
+                      <a href="../hotel/hotelList">호텔 목록</a>
                     </div>
                   </div>
                 </div>

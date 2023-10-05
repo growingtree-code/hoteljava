@@ -37,10 +37,10 @@ public class UsersController {
 		Users u = service.getUsers(email);
 		
 		if (u == null) {
-			result = "사용가능";
+			result = "사용가능한 이메일입니다.";
 			session.setAttribute("emailCheck", true);
 		} else {
-			result = "사용불가능";
+			result = "사용불가능한 이메일입니다.";
 			session.setAttribute("emailCheck", false);
 		}
 		System.out.println(session.getAttribute("emailCheck"));
@@ -64,8 +64,10 @@ public class UsersController {
 			HttpSession session = req.getSession();
 			session.setAttribute("email", u2.getEmail());
 			session.setAttribute("name", u2.getName());
+			session.setAttribute("point", u2.getPoint());
 			session.setAttribute("type", u2.getType());
-			return "users/main";
+//			return "users/main";
+			return "index.jsp";
 		}
 	}
    

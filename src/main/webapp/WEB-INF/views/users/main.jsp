@@ -6,6 +6,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        $(document).ready(function() {
+           console.log("path",${path});
+        });
+    </script>
 </head>
 <body>
 ${sessionScope.name }님 로그인 상태
@@ -17,17 +23,15 @@ ${sessionScope.name }님 로그인 상태
 <%--	<c:set var="path" value="/seller/allList"/>--%>
 <%--</c:if>--%>
 <%--<c:if test="${sessionScope.type==2 }">--%>
-<%--	<c:set var="path" --%>
+<%--	<c:set var="path"--%>
 <%--	value="/seller/myList"/>--%>
 <%--</c:if>--%>
 
-<%--<c:if test="${sessionScope.type==0 }">--%>
-<%--	<c:set var="path" --%>
-<%--	value="/users/adminPage"/>--%>
-<%--</c:if>--%>
-<%--<c:import url="${path }"></c:import>--%>
-
-
+<c:if test="${sessionScope.type==0 }">
+	<c:set var="path"
+	value="/users/adminPage"/>
+</c:if>
+<c:import url="${path }"></c:import>
 </body>
 </html>
 

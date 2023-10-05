@@ -80,7 +80,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="page-content">
-                    <div class="heading-section">
+                    <div class="heading-section" style="justify-content: center; display: flex">
                         <h4>·Î±×ÀÎ</h4>
                     </div>
                     <!-- ***** Banner Start ***** -->
