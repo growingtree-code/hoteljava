@@ -25,6 +25,11 @@ public class HomeController {
     public String payment(){
         return "payment/Payment";
     }
+    @GetMapping(value ="/paymentTest")
+    public String paymentTest(){
+        return "PaymentTest";
+    }
+
 
 
     @GetMapping(value ="/details")

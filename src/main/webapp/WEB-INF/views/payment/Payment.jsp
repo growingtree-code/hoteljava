@@ -22,13 +22,14 @@
   <link rel="stylesheet" href="assets/css/owl.css">
   <link rel="stylesheet" href="assets/css/animate.css">
   <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
-  <!--
 
-  TemplateMo 579 Cyborg Gaming
-
-  https://templatemo.com/tm-579-cyborg-gaming
-
-  -->
+  <!-- 포트원 결제 -->
+  <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+  <!-- jQuery -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <!-- iamport.payment.js -->
+  <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+  <!-- 포트원 결제 -->
 </head>
 
 <body>
