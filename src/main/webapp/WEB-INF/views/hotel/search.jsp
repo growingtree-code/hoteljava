@@ -106,24 +106,11 @@ https://templatemo.com/tm-579-cyborg-gaming
             <div class="game-details">
               <div class="row">
                 <div class="col-lg-12 header-text">
-                  <c:choose>
-                  	<c:when test="${cate == 1 }">
-                  	  <h2>호텔/리조트</h2>
-                  	</c:when>
-                  	<c:when test="${cate == 2 }">
-                  	  <h2>펜션/풀빌라</h2>
-                  	</c:when>
-                  	<c:when test="${cate == 3 }">
-                  	  <h2>모텔</h2>
-                  	</c:when>
-                  	<c:when test="${cate == 4 }">
-                  	  <h2>게스트하우스</h2>
-                  	</c:when>
-                  </c:choose>
+                  <h2>검색결과</h2>
                   
                 </div>
                 
-                <c:forEach items="${catelist }" var="h">
+                <c:forEach items="${searchlist }" var="h">
 	                <div class="col-lg-3" style="margin-bottom: 10px;">
 	                  <div class="content">
 	                    <div class="row">

@@ -27,6 +27,10 @@ public class HotelService {
 		return mapper.selectByCategory(cate);
 	}
 	
+	public List getHotelByKeyword(String keyword) {
+		return mapper.selectByKeyword(keyword);
+	}
+	
 	public List getHotelAll() {
 		return mapper.selectAll();
 	}

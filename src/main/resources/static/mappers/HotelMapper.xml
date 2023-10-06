@@ -31,6 +31,12 @@
 		select * from Hotel where hotel_category=#{hotel_category}  order by hotel_id
 	</select>
 	
+	<select id="selectByKeyword" parameterType="String" 
+	resultMap="HotelResult">
+		select * from Hotel where hotel_name like '%'||#{keyword}||'%'
+		or hotel_addres like '%'||#{keyword}||'%' order by hotel_id
+	</select>
+	
 	<select id="selectAll" resultMap="HotelResult">
 		select * from Hotel order by hotel_id
 	</select>
