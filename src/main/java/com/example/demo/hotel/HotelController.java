@@ -50,7 +50,7 @@ public class HotelController {
 			File f = new File(basePath + num + "\\" + fileName);
 
 			/* 이재혁 맥 */
-		//	File f = new File(basePath + num + "/" + fileName);
+//			File f = new File(basePath + num + "/" + fileName);
 
 			try {
 				file.transferTo(f);

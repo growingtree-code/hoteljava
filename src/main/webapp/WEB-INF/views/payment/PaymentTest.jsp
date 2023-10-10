@@ -29,7 +29,7 @@
         IMP.request_pay({
             pg : 'kakaopay.TC0ONETIME',
             pay_method : 'card',
-            merchant_uid: "order_no_0002", // 상점에서 관리하는 주문 번호
+            merchant_uid: "order_no_0003", // 상점에서 관리하는 주문 번호
             name : '주문명:결제테스트',
             amount : 15000,
             buyer_email : 'iamport@siot.do',
@@ -41,7 +41,7 @@
             if ( rsp.success ) {
                 //[1] 서버단에서 결제정보 조회를 위해 jQuery ajax로 imp_uid 전달하기
                 jQuery.ajax({
-                    url: "/payments/complete", //cross-domain error가 발생하지 않도록 주의해주세요
+                    url: "/payment/complete", //cross-domain error가 발생하지 않도록 주의해주세요
                     type: 'POST',
                     dataType: 'json',
                     data: {

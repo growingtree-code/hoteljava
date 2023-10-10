@@ -29,7 +29,9 @@
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
   <!-- iamport.payment.js -->
   <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
-  <!-- 포트원 결제 -->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 </head>
 
 <body>
@@ -48,7 +50,44 @@
 <!-- ***** Preloader End ***** -->
 
 <!-- ***** Header Area Start ***** -->
-<%@ include file="../nav.jsp" %>
+<header class="header-area header-sticky">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <nav class="main-nav">
+          <!-- ***** Logo Start ***** -->
+          <a href="${pageContext.request.contextPath }/index" class="logo">
+            <img src="assets/images/hotelJAVA.png" alt="" />
+          </a>
+          <!-- ***** Logo End ***** -->
+          <!-- ***** Search End ***** -->
+          <div class="search-input">
+            <form id="search" action="#">
+              <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword" onkeypress="handle" />
+              <i class="fa fa-search"></i>
+            </form>
+          </div>
+          <!-- ***** Search End ***** -->
+          <!-- ***** Menu Start ***** -->
+          <ul class="nav">
+            <li><a href="${pageContext.request.contextPath }/index" class="active">Home</a></li>
+            <li><a href="${pageContext.request.contextPath }/browse">Browse</a></li>
+            <li><a href="${pageContext.request.contextPath }/details">Details</a></li>
+            <li><a href="${pageContext.request.contextPath }/streams">Streams</a></li>
+            <li>
+              <a href="${pageContext.request.contextPath }/profile">Profile <img src="assets/images/profile-header.jpg" alt=""
+              /></a>
+            </li>
+          </ul>
+          <a class='menu-trigger'>
+            <span>Menu</span>
+          </a>
+          <!-- ***** Menu End ***** -->
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
 <!-- ***** Header Area End ***** -->
 
 <div class="container">

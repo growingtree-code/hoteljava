@@ -108,7 +108,7 @@ https://templatemo.com/tm-579-cyborg-gaming
 	                          <ul>
 	                            <li><i class="fa fa-star"></i> 4.8</li>
 	                            <li><i class="fa fa-download"></i> 2.3M</li>
-	                            <li><i class="fa fa-server"></i> 36GB</li>
+	                            <li><i class="fa fa-server"></i> 36GB</li>r
 	                            <li><i class="fa fa-gamepad"></i> Action</li>
 	                          </ul>
 	                        </div>
@@ -140,10 +140,16 @@ https://templatemo.com/tm-579-cyborg-gaming
 	                        <p>
 	                          ${r.room_info }
 	                        </p>
+                              <p>
+                                      ${r.price }원
+                              </p>
 	                      </div>
 	                      <div class="col-lg-12">
+                              <div class="main-border-button">
+                                  <a href="${pageContext.request.contextPath }/myCart">장바구니 담기 </a>
+                              </div>
 	                        <div class="main-border-button">
-	                          <a href="#">예약하기</a>
+	                          <a href="${pageContext.request.contextPath }/payment">예약하기 </a>
 	                        </div>
 	                      </div>
 	                    </div>

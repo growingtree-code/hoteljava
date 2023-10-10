@@ -27,7 +27,7 @@ public class HomeController {
     }
     @GetMapping(value ="/paymentTest")
     public String paymentTest(){
-        return "PaymentTest";
+        return "payment/PaymentTest";
     }
 
 
