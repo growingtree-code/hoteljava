@@ -6,12 +6,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script>
-        $(document).ready(function() {
-           console.log("path",${path});
-        });
-    </script>
 </head>
 <body>
 ${sessionScope.name }님 로그인 상태

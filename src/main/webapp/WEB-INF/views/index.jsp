@@ -18,13 +18,13 @@
     <title>Cyborg - Awesome HTML5 Template</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="assets/css/fontawesome.css" />
-    <link rel="stylesheet" href="assets/css/templatemo-cyborg-gaming.css" />
-    <link rel="stylesheet" href="assets/css/owl.css" />
-    <link rel="stylesheet" href="assets/css/animate.css" />
+    <link rel="stylesheet" href="../assets/css/fontawesome.css" />
+    <link rel="stylesheet" href="../assets/css/templatemo-cyborg-gaming.css" />
+    <link rel="stylesheet" href="../assets/css/owl.css" />
+    <link rel="stylesheet" href="../assets/css/animate.css" />
     <link
       rel="stylesheet"
       href="https://unpkg.com/swiper@7/swiper-bundle.min.css"
@@ -36,43 +36,9 @@ TemplateMo 579 Cyborg Gaming
 https://templatemo.com/tm-579-cyborg-gaming
 
 -->
-    <style>
-      .dropdown{
-        position : relative;
-        display : inline-block;
-      }
-
-      .dropdown-content{
-        display : none;
-        position : absolute;
-        z-index : 1; /*다른 요소들보다 앞에 배치*/
-      }
-
-      .dropdown-content a{
-        display : block;
-      }
-
-      .dropdown:hover .dropdown-content {
-        display: block;
-      }
-
-    </style>
   </head>
 
   <body>
-    <!-- ***** Preloader Start ***** -->
-    <div id="js-preloader" class="js-preloader">
-      <div class="preloader-inner">
-        <span class="dot"></span>
-        <div class="dots">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-    </div>
-    <!-- ***** Preloader End ***** -->
-
     <!-- ***** Header Area Start ***** -->
     <%@ include file="nav.jsp" %>
     <!-- ***** Header Area End ***** -->
@@ -81,12 +47,25 @@ https://templatemo.com/tm-579-cyborg-gaming
       <div class="row">
         <div class="col-lg-12">
           <div class="page-content">
+
+            <c:choose>
+              <c:when test="${sessionScope.type == 0}">
+                <c:set var="path" value="/users/adminPage" />
+              </c:when>
+              <c:otherwise>
+                <%-- 0이 아닌 경우 아무 작업도 수행하지 않음 --%>
+              </c:otherwise>
+            </c:choose>
+
+            <c:if test="${!empty path}">
+              <c:import url="${path}" />
+            </c:if>
+
             <!-- ***** Banner Start ***** -->
             <div class="main-banner">
               <div class="row">
                 <div class="col-lg-7">
                   <div class="header-text">
-
                     <h6>Welcome To Hotel JAVA</h6>
                     <h4><em>Browse</em> Our Popular Hotels & Rooms Here</h4>
                     <div class="main-button">
@@ -109,7 +88,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                   <div class="row">
                     <div class="col-lg-3 col-sm-6">
                       <div class="item">
-                        <img src="assets/images/popular-01.jpg" alt="" />
+                        <img src="../assets/images/popular-01.jpg" alt="" />
                         <h4>Fortnite<br /><span>Sandbox</span></h4>
                         <ul>
                           <li><i class="fa fa-star"></i> 4.8</li>
@@ -119,7 +98,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                     </div>
                     <div class="col-lg-3 col-sm-6">
                       <div class="item">
-                        <img src="assets/images/popular-02.jpg" alt="" />
+                        <img src="../assets/images/popular-02.jpg" alt="" />
                         <h4>PubG<br /><span>Battle S</span></h4>
                         <ul>
                           <li><i class="fa fa-star"></i> 4.8</li>
@@ -129,7 +108,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                     </div>
                     <div class="col-lg-3 col-sm-6">
                       <div class="item">
-                        <img src="assets/images/popular-03.jpg" alt="" />
+                        <img src="../assets/images/popular-03.jpg" alt="" />
                         <h4>Dota2<br /><span>Steam-X</span></h4>
                         <ul>
                           <li><i class="fa fa-star"></i> 4.8</li>
@@ -139,7 +118,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                     </div>
                     <div class="col-lg-3 col-sm-6">
                       <div class="item">
-                        <img src="assets/images/popular-04.jpg" alt="" />
+                        <img src="../assets/images/popular-04.jpg" alt="" />
                         <h4>CS-GO<br /><span>Legendary</span></h4>
                         <ul>
                           <li><i class="fa fa-star"></i> 4.8</li>
@@ -152,7 +131,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                         <div class="row">
                           <div class="col-lg-6 col-sm-6">
                             <div class="item inner-item">
-                              <img src="assets/images/popular-05.jpg" alt="" />
+                              <img src="../assets/images/popular-05.jpg" alt="" />
                               <h4>Mini Craft<br /><span>Legendary</span></h4>
                               <ul>
                                 <li><i class="fa fa-star"></i> 4.8</li>
@@ -162,7 +141,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                           </div>
                           <div class="col-lg-6 col-sm-6">
                             <div class="item">
-                              <img src="assets/images/popular-06.jpg" alt="" />
+                              <img src="../assets/images/popular-06.jpg" alt="" />
                               <h4>Eagles Fly<br /><span>Matrix Games</span></h4>
                               <ul>
                                 <li><i class="fa fa-star"></i> 4.8</li>
@@ -175,7 +154,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                     </div>
                     <div class="col-lg-3 col-sm-6">
                       <div class="item">
-                        <img src="assets/images/popular-07.jpg" alt="" />
+                        <img src="../assets/images/popular-07.jpg" alt="" />
                         <h4>Warface<br /><span>Max 3D</span></h4>
                         <ul>
                           <li><i class="fa fa-star"></i> 4.8</li>
@@ -185,7 +164,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                     </div>
                     <div class="col-lg-3 col-sm-6">
                       <div class="item">
-                        <img src="assets/images/popular-08.jpg" alt="" />
+                        <img src="../assets/images/popular-08.jpg" alt="" />
                         <h4>Warcraft<br /><span>Legend</span></h4>
                         <ul>
                           <li><i class="fa fa-star"></i> 4.8</li>
@@ -214,7 +193,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                   <ul>
                     <li>
                       <img
-                        src="assets/images/game-01.jpg"
+                        src="../assets/images/game-01.jpg"
                         alt=""
                         class="templatemo-item"
                       />
@@ -246,7 +225,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                   <ul>
                     <li>
                       <img
-                        src="assets/images/game-02.jpg"
+                        src="../assets/images/game-02.jpg"
                         alt=""
                         class="templatemo-item"
                       />
@@ -278,7 +257,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                   <ul>
                     <li>
                       <img
-                        src="assets/images/game-03.jpg"
+                        src="../assets/images/game-03.jpg"
                         alt=""
                         class="templatemo-item"
                       />
@@ -344,13 +323,13 @@ https://templatemo.com/tm-579-cyborg-gaming
 
     <!-- Scripts -->
     <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
 
-    <script src="assets/js/isotope.min.js"></script>
-    <script src="assets/js/owl-carousel.js"></script>
-    <script src="assets/js/tabs.js"></script>
-    <script src="assets/js/popup.js"></script>
-    <script src="assets/js/custom.js"></script>
+    <script src="../assets/js/isotope.min.js"></script>
+    <script src="../assets/js/owl-carousel.js"></script>
+    <script src="../assets/js/tabs.js"></script>
+    <script src="../assets/js/popup.js"></script>
+    <script src="../assets/js/custom.js"></script>
   </body>
 </html>

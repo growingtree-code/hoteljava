@@ -35,6 +35,37 @@ TemplateMo 579 Cyborg Gaming
 https://templatemo.com/tm-579-cyborg-gaming
 
 -->
+    <style>
+      .dropdown{
+        position : relative;
+        display : inline-block;
+      }
+
+      .dropdown-content{
+        display : none;
+        position : absolute;
+        z-index : 1; /*다른 요소들보다 앞에 배치*/
+      }
+
+      .dropdown-content a{
+        display : block;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+    </style>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+      var name = '<%=(String)session.getAttribute("name")%>';
+
+      if(name){
+        // document.getElementById("basic_proimg").style.display = "none";
+        // document.getElementsByClassName("dropbtn").href = "";
+      }
+
+    </script>
 
   </head>
 
@@ -63,17 +94,23 @@ https://templatemo.com/tm-579-cyborg-gaming
                 <li><a href="${pageContext.request.contextPath }/index" class="active">Home</a></li>
                 <li><a href="${pageContext.request.contextPath }/browse">Browse</a></li>
                 <li><a href="${pageContext.request.contextPath }/details">Details</a></li>
-                <li><a href="${pageContext.request.contextPath }/streams">Streams</a></li>
+<%--                <li><a href="${pageContext.request.contextPath }/streams">Streams</a></li>--%>
                 <c:if test="${sessionScope.type==0 || sessionScope.type==2}">
                   <li><a href="${pageContext.request.contextPath }/hotel/form">호텔등록</a></li>
                 </c:if>
-                <li><a href="${pageContext.request.contextPath }/users/loginForm">
-                  로그인<img src="../assets/images/profile-header.jpg" alt=""/></a></li>
-<%--                <li>--%>
-<%--                  <a href="${pageContext.request.contextPath }/profile"--%>
-<%--                    >Profile <img src="assets/images/profile-header.jpg" alt=""--%>
-<%--                  /></a>--%>
-<%--                </li>--%>
+                <c:if test="${sessionScope.type==0}">
+                  <li><a href="${pageContext.request.contextPath }/users/adminPage">회원관리</a></li>
+                </c:if>
+                <li class="dropdown"><a class="dropbtn" href="${pageContext.request.contextPath }/users/loginForm">
+                  ${sessionScope.name}<span id ="logintxt" style="">로그인</span>
+                  <img src="../assets/images/profile-header.jpg" alt="" id="basic_proimg"style=""/></a>
+                  <div class="dropdown-content">
+                    <a href="${pageContext.request.contextPath }/users/editForm">내정보수정</a>
+                    <a href="${pageContext.request.contextPath }/users/logout">로그아웃</a>
+                    <a href="${pageContext.request.contextPath }/users/out">탈퇴</a>
+                  </div>
+                </li>
+
               </ul>
               <a class="menu-trigger">
                 <span>Menu</span>
