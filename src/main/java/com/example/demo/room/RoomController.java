@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -19,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.hotel.Hotel;
 import com.example.demo.hotel.HotelService;
+import com.example.demo.users.UsersService;
 
 @Controller
 public class RoomController {
@@ -27,6 +29,8 @@ public class RoomController {
 	private RoomService service;
 	@Autowired
 	private HotelService hotelservice;
+	@Autowired
+	private UsersService userservice;
 	
 	public static String basePath = "C:\\roomimg\\";
 	
@@ -57,7 +61,11 @@ public class RoomController {
 		
 		ModelAndView mav = new ModelAndView("room/form");
 		
-		ArrayList<Hotel> hotellist = (ArrayList<Hotel>) hotelservice.getHotelAll();
+		HttpSession session = req.getSession(false);
+		String email = (String) session.getAttribute("email");
+		int userid = userservice.searchUserIdByEmail(email);
+		
+		ArrayList<Hotel> hotellist = (ArrayList<Hotel>) hotelservice.getHotelBySeller(userid);
 		mav.addObject("hotellist",hotellist);
 		
 		return mav;

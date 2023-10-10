@@ -13,6 +13,7 @@ public interface HotelMapper {
 	List selectByName(String name);
 	List selectByCategory(int cate);
 	List selectByKeyword(String keyword);
+	List selectBySeller(int user_id);
 	List selectAll();
 	
 	void update(Hotel h);

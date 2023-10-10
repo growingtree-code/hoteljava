@@ -14,7 +14,7 @@
 	<select id="select" resultMap="UsersResult" parameterType="String">
 		select * from users where email = #{email}
 	</select>
-	<select id="selectUserIdByEmail" parameterType="String">
+	<select id="selectUserIdByEmail" resultType="int" parameterType="String">
 		select user_id from users where email = #{email}
 	</select>
 	

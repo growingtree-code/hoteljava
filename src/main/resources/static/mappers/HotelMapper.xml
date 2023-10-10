@@ -10,10 +10,11 @@
 		<result column="hotel_phone" property="hotel_phone" />
 		<result column="hotel_img" property="hotel_img" />
 		<result column="hotel_category" property="hotel_category" />
+		<result column="user_id" property="user_id" />
 	</resultMap>
 	<insert id="insert" parameterType="com.example.demo.hotel.Hotel">
 		insert into Hotel 
-		values(#{hotel_id}, #{hotel_name}, #{hotel_addres}, #{hotel_phone}, #{hotel_img}, #{hotel_category}) 
+		values(#{hotel_id}, #{hotel_name}, #{hotel_addres}, #{hotel_phone}, #{hotel_img}, #{hotel_category}, #{user_id}) 
 	</insert>
 	
 	<select id="selectByNum" parameterType="int" 
@@ -35,6 +36,11 @@
 	resultMap="HotelResult">
 		select * from Hotel where hotel_name like '%'||#{keyword}||'%'
 		or hotel_addres like '%'||#{keyword}||'%' order by hotel_id
+	</select>
+	
+	<select id="selectBySeller" parameterType="int" 
+	resultMap="HotelResult">
+		select * from Hotel where user_id=#{user_id}
 	</select>
 	
 	<select id="selectAll" resultMap="HotelResult">

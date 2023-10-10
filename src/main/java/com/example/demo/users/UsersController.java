@@ -67,7 +67,7 @@ public class UsersController {
 			session.setAttribute("point", u2.getPoint());
 			session.setAttribute("type", u2.getType());
 //			return "users/main";
-			return "index.jsp";
+			return "index";
 		}
 	}
    

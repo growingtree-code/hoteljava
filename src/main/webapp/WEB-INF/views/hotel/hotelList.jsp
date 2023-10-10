@@ -49,44 +49,7 @@ https://templatemo.com/tm-579-cyborg-gaming
   <!-- ***** Preloader End ***** -->
 
   <!-- ***** Header Area Start ***** -->
-  <header class="header-area header-sticky">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <nav class="main-nav">
-                    <!-- ***** Logo Start ***** -->
-                    <a href="${pageContext.request.contextPath }/index" class="logo">
-                      <img src="../assets/images/hotelJAVA.png" alt="" />
-                    </a>
-                    <!-- ***** Logo End ***** -->
-                    <!-- ***** Search End ***** -->
-                    <div class="search-input">
-                      <form id="search" action="${pageContext.request.contextPath }/hotel/search" method="post">
-                        <input type="text" placeholder="Type Something" id='searchText' name="keyword" />
-                        <i class="fa fa-search"></i>
-                      </form>
-                    </div>
-                    <!-- ***** Search End ***** -->
-                  <!-- ***** Menu Start ***** -->
-                  <ul class="nav">
-                    <li><a href="${pageContext.request.contextPath }/index" class="active">Home</a></li>
-                    <li><a href="${pageContext.request.contextPath }/browse">Browse</a></li>
-                    <li><a href="${pageContext.request.contextPath }/details">Details</a></li>
-                    <li><a href="${pageContext.request.contextPath }/hotel/form">호텔등록</a></li>
-                    <li>
-                      <a href="${pageContext.request.contextPath }/profile">Profile <img src="../assets/images/profile-header.jpg" alt=""
-                      /></a>
-                    </li>
-                  </ul>
-                    <a class='menu-trigger'>
-                        <span>Menu</span>
-                    </a>
-                    <!-- ***** Menu End ***** -->
-                </nav>
-            </div>
-        </div>
-    </div>
-  </header>
+  <%@ include file="../nav.jsp" %>
   <!-- ***** Header Area End ***** -->
 
   <div class="container">

@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -20,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.room.Room;
 import com.example.demo.room.RoomService;
+import com.example.demo.users.UsersService;
 
 @Controller
 public class HotelController {
@@ -29,6 +31,9 @@ public class HotelController {
 	
 	@Autowired
 	private RoomService roomservice;
+	
+	@Autowired
+	private UsersService userservice;
 	
 	public static String basePath = "C:\\hotelimg\\";
 
@@ -88,12 +93,18 @@ public class HotelController {
 	}
 	
 	@RequestMapping(value="/hotel/add")
-	public String add(Hotel h) {
+	public String add(HttpServletRequest req, Hotel h) {
 		int num = service.getNum();
 		h.setHotel_id(num);
 		
 		String filename = saveImg(num, h.getHotel_imgfile());
 		h.setHotel_img(filename);
+		
+		HttpSession session = req.getSession(false);
+		String email = (String) session.getAttribute("email");
+		int userid = userservice.searchUserIdByEmail(email);
+		h.setUser_id(userid);
+		
 		service.addHotel(h);
 		System.out.println(h);
 		return "redirect:hotelList";

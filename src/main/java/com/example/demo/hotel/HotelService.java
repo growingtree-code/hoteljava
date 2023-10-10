@@ -31,6 +31,10 @@ public class HotelService {
 		return mapper.selectByKeyword(keyword);
 	}
 	
+	public List getHotelBySeller(int user_id) {
+		return mapper.selectBySeller(user_id);
+	}
+	
 	public List getHotelAll() {
 		return mapper.selectAll();
 	}
