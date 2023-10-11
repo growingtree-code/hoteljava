@@ -1,110 +1,61 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script>
-	var sel1=0; //¼±ÅÃÇÑ °Í ÀúÀåÇÒ º¯¼ö ´ëºĞ·ù
-	var sel2=0; //¼±ÅÃÇÑ °Í ÀúÀåÇÒ º¯¼ö ¼ÒºĞ·ù
-	$(document).ready(function() {
-	$.post("/admin/getsub", {
-			type : 1,// ´ëºĞ·ù ¹øÈ£ 
-			p_id : 0 // 
-	}).done(
-			function(data) {
-			var c = eval("(" + data + ")");
-				for (i = 0; i < c.length; i++) {
-					$("#s1").append(
-						"<option value='"+c[i].id+"'>"
-						+ c[i].name + "</option>"); //´ëºĞ·ù °ªÀ» ¹Ş¾Æ¿Í¼­ Ãß°¡ÇÏ°í 
-							}
-						});
-				
-				$("#s1").click(function() {
-					var x = 0;
-					x = this.options[this.options.selectedIndex].value
-					sel1 = x;
-					$.post("/admin/getsub", {
-						type : 2,
-						p_id : x // Àü´Ü°è ´ëºĞ·ù 
-					}).done(function(data) {
-						var c = eval("(" + data + ")");
-						$("#s2").empty();//ÃÊ±âÈ­¸¦ ÇÏ·Á¸é ºñ¿ì°í 
-						$("#s3").empty(); //ÃÊ±âÈ­¸¦ ÇÏ·Á¸é ºñ¿ì°í
-						for (i = 0; i < c.length; i++) {
-							$("#s2").append("<option value='"+c[i].id+"'>"//Ãß°¡ÇÏ°í 
-									+ c[i].name + "</option>");
-						}
-					});
-				});
-				
-				$("#s2").click(function() {
-					var x = 0;
-					x = this.options[this.options.selectedIndex].value
-					sel2=x;
-					$.post("/admin/getsub", {
-						type : 3,
-						p_id : x // ÁßºĞ·ù ºÎ¸ğ 
-					}).done(function(data) {
-						var c = eval("(" + data + ")");
-						$("#s3").empty();//ÃÊ±âÈ­¸¦ ÇÏ·Á¸é ºñ¿ì°í
-						for (i = 0; i < c.length; i++) {
-							$("#s3").append("<option value='"+c[i].id+"'>"//Ãß°¡ÇÏ°í 
-									+ c[i].name + "</option>");
-						}
-					});
-				});
+	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+		<meta
+				name="viewport"
+				content="width=device-width, initial-scale=1, shrink-to-fit=no"
+		/>
+		<link
+				href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+				rel="stylesheet"
+		/>
 
-				$("input[type=button]").click(function() {		
-					if(this.form.elements[0].name=='s2'){//Áßºå·ù ¹öÆ°À» ´­·¶À» ¶§ sel1ÀÇ °ªÀ» 
-						this.form.p_id.value=sel1;
-					}else if(this.form.elements[0].name=='s3'){//¼ÒºĞ·ù ¹öÆ°À» ´­·ÈÀ» ¶§ sel2 °ªÀ» ´ëÀÔ 
-						this.form.p_id.value=sel2;
-					}
-					var o = this.form.elements[0].options;
-					for(i=0;i<o.length;i++){						
-						if(o[i].text==this.form.name.value){
-							alert("ÀÌ¹Ì ÀÖ´Â Ä«Å×°í¸®ÀÔ´Ï´Ù.");
-							return;
-						}
-					}
-					this.form.submit();
-				});
-			});
-</script>
+	<title>Hotel JAVA : ê´€ë¦¬ì í˜ì´ì§€</title>
+
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 </head>
 <body>
-	<h3>°ü¸®ÀÚ</h3>
-	´ëºĞ·ù:
-	<form id="f1"action="${pageContext.request.contextPath }
-	/admin/addCategory" onsubmit="return false" method="post">
-		<select id="s1" name="s1"></select> 
-		<input type="text" id="n1" name="name">
-		<input type="hidden" name="type" value="1">
-		<input type="button" id="b1" value="Ãß°¡">
-	</form>
-	<br>	
-	ÁßºĞ·ù:	
-	<form id="f2" action="${pageContext.request.contextPath }
-	/admin/addCategory" onsubmit="return false"  method="post">
-		<select id="s2"  name="s2"></select> 
-		<input type="text" id="n2" name="name">
-		<input type="hidden" name="type" value="2">
-		<input type="hidden" id="h1" name="p_id" value="">
-		<input type="button" id="b2" value="Ãß°¡">
-	</form>
-	<br>	
-	¼ÒºĞ·ù:
-	<form id="f3" action="${pageContext.request.contextPath }
-	/admin/addCategory?type=3" onsubmit="return false"  method="post">
-		<select id="s3"  name="s3"></select> 
-		<input type="text" id="n3" name="name">
-		<input type="hidden" name="type" value="3">
-		<input type="hidden" id="h2" name="p_id" value="">
-		<input type="button" id="b3" value="Ãß°¡">
-	</form>
+<%--	<%@ include file="../nav.jsp" %>--%>
+	<h3>ê´€ë¦¬ì</h3>
+
+
+	<br>
+	íšŒì›ê´€ë¦¬:
+
+<table>
+	<tr>
+		<th>íšŒì›ë²ˆí˜¸</th>
+		<th>ì´ë©”ì¼</th>
+		<th>ì´ë¦„</th>
+		<th>í¬ì¸íŠ¸</th>
+		<th>íƒ€ì…</th>
+	</tr>
+	<c:forEach var="users" items="${users}">
+		<tr>
+			<td>${users.user_id}</td>
+			<td>${users.email}</td>
+			<td>${users.name}</td>
+			<td>${users.point}</td>
+			<td>${users.type}</td>
+<%--			<c:when test="${users.type == 1}">--%>
+<%--				<td>íŒë§¤ì</td>--%>
+<%--			</c:when>--%>
+<%--			<c:when test="${users.type == 2}">--%>
+<%--				<td>êµ¬ë§¤ì</td>--%>
+<%--			</c:when>--%>
+			<td>${users.type}</td>
+		</tr>
+	</c:forEach>
+
+</table>
+
+
 </body>
 </html>

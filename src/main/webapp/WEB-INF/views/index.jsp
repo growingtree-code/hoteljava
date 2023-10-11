@@ -15,7 +15,7 @@
       rel="stylesheet"
     />
 
-    <title>Cyborg - Awesome HTML5 Template</title>
+    <title>Hotel JAVA : Home</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -29,13 +29,7 @@
       rel="stylesheet"
       href="https://unpkg.com/swiper@7/swiper-bundle.min.css"
     />
-    <!--
 
-TemplateMo 579 Cyborg Gaming
-
-https://templatemo.com/tm-579-cyborg-gaming
-
--->
   </head>
 
   <body>

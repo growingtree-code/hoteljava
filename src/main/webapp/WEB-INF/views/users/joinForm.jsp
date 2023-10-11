@@ -114,12 +114,8 @@
 															<h5 style="display: inline-block; width: 10vw;">가입종류</h5>
 															<input type="radio" name="type" value="1">구매자
 															<input type="radio" name="type" value="2">판매자
-															<input type="radio" name="type" value="0">관리자
 														</li>
 													</ul>
-<%--													<input type="submit" value="로그인">--%>
-<%--													<button type="submit" form="login_btn" >로그인</button>--%>
-<%--													<a href="javascript:login_btn.submit();">로그인</a>--%>
 
 													<div class="main-button" style="display: inline;">
 														<a href="${pageContext.request.contextPath }/users/loginForm"style="font-weight: bold;margin-left: 55%; margin-right: 5%;">취소</a>

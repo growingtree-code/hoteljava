@@ -1,6 +1,7 @@
 package com.example.demo.users;
 
 public class Users {
+	private int user_id;
 	private String email;
 	private String pwd;
 	private String name;
@@ -10,13 +11,18 @@ public class Users {
 	public Users() {
 	}
 
-	public Users(String email, String pwd, String name, int point, int type) {
+	public Users(int user_id,String email, String pwd, String name, int point, int type) {
+		this.user_id = user_id;
 		this.email = email;
 		this.pwd = pwd;
 		this.name = name;
 		this.point = point;
 		this.type = type;
 	}
+
+	public int getUser_id() {return user_id; }
+
+	public void setUser_id(int user_id) {this.user_id = user_id;}
 
 	public String getEmail() {
 		return email;
@@ -60,13 +66,13 @@ public class Users {
 
 	@Override
 	public String toString() {
-		return "Member{" +
-				"email='" + email + '\'' +
+		return "Users{" +
+				"user_id=" + user_id +
+				", email='" + email + '\'' +
 				", pwd='" + pwd + '\'' +
 				", name='" + name + '\'' +
 				", point=" + point +
 				", type=" + type +
 				'}';
 	}
-
 }

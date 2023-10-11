@@ -5,11 +5,17 @@
 <mapper namespace="com.example.demo.users.UsersMapper">
 
 	<resultMap id="UsersResult" type="com.example.demo.users.Users">
+		<result column="user_id" property="user_id" />
 		<result column="email" property="email" />
 		<result column="pwd" property="pwd" />
 		<result column="name" property="name" />
+		<result column="point" property="point" />
 		<result column="type" property="type" />
 	</resultMap>
+
+	<select id="userlist" resultMap="UsersResult">
+		select * from users where type in(1,2) order by user_id
+	</select>
 
 	<select id="select" resultMap="UsersResult" parameterType="String">
 		select * from users where email = #{email}

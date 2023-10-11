@@ -3,6 +3,8 @@ package com.example.demo.users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UsersService {
 	
@@ -16,6 +18,8 @@ public class UsersService {
 	public Users getUsers(String id) {
 		return mapper.select(id);
 	}
+
+	public List getAllUsers() {return mapper.userlist();}
 
 	public void editUsers(Users u) {
 		mapper.update(u);

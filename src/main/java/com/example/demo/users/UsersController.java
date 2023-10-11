@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
+
 @Controller
 public class UsersController {
 	
@@ -66,6 +68,11 @@ public class UsersController {
 			session.setAttribute("name", u2.getName());
 			session.setAttribute("point", u2.getPoint());
 			session.setAttribute("type", u2.getType());
+
+//			if(u2.getType() == 0){
+//
+//				return "/users/adminPage";
+//			}
 //			return "users/main";
 			return "index";
 		}
@@ -75,7 +82,7 @@ public class UsersController {
 	public ModelAndView editForm(HttpServletRequest req){
 		ModelAndView mav = new ModelAndView("users/editForm");
 		HttpSession session = req.getSession(false);
-		String id = (String)session.getAttribute("id");
+		String id = (String)session.getAttribute("email");
 		Users m = service.getUsers(id);
 		mav.addObject("m", m);
 		return mav;
@@ -90,7 +97,7 @@ public class UsersController {
 	@RequestMapping(value = "/users/logout")
 	public String logout(HttpServletRequest req){
 		HttpSession session = req.getSession(false);
-		session.removeAttribute("id");
+		session.removeAttribute("email");
 		session.invalidate();
 		return "users/loginForm";
 	}
@@ -98,9 +105,9 @@ public class UsersController {
 	@RequestMapping(value = "/users/out")
 	public String out(HttpServletRequest req){
 		HttpSession session = req.getSession(false);
-		String id = (String)session.getAttribute("id");
+		String id = (String)session.getAttribute("email");
 		service.delUsers(id);
-		session.removeAttribute("id");
+		session.removeAttribute("email");
 		session.invalidate();
 		return "users/loginForm";
 	}
@@ -109,13 +116,15 @@ public class UsersController {
 	public String prodPage() {
 		return "users/prodPage";
 	}
-	
-	
-	
+
+
 	@RequestMapping(value = "/users/adminPage")
-	public String adminPage() {
-		
-		return "users/adminPage";
+	public ModelAndView adminPage() {
+
+		ModelAndView mav = new ModelAndView("users/adminPage");
+		ArrayList<Users> users = (ArrayList<Users>)service.getAllUsers();
+		mav.addObject("users", users);
+		return mav;
 	}
 
    

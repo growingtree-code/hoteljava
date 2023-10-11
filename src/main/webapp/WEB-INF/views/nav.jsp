@@ -104,11 +104,18 @@ https://templatemo.com/tm-579-cyborg-gaming
                 <li class="dropdown"><a class="dropbtn" href="${pageContext.request.contextPath }/users/loginForm">
                   ${sessionScope.name}<span id ="logintxt" style="">로그인</span>
                   <img src="../assets/images/profile-header.jpg" alt="" id="basic_proimg"style=""/></a>
-                  <div class="dropdown-content">
-                    <a href="${pageContext.request.contextPath }/users/editForm">내정보수정</a>
-                    <a href="${pageContext.request.contextPath }/users/logout">로그아웃</a>
-                    <a href="${pageContext.request.contextPath }/users/out">탈퇴</a>
-                  </div>
+                    <c:choose>
+                        <c:when test="${sessionScope.name != null}">
+                            <div class="dropdown-content">
+                                <a href="${pageContext.request.contextPath }/users/editForm">내정보수정</a>
+                                <a href="${pageContext.request.contextPath }/users/logout">로그아웃</a>
+                                <a href="${pageContext.request.contextPath }/users/out">탈퇴</a>
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+                            <%-- 0이 아닌 경우 아무 작업도 수행하지 않음 --%>
+                        </c:otherwise>
+                    </c:choose>
                 </li>
 
               </ul>
