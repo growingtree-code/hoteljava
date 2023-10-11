@@ -48,8 +48,8 @@
 	</select>
 	
 	<update id="update" parameterType="com.example.demo.hotel.Hotel">
-		update Hotel set hotel_name=#{hotel_name}, hotel_addres=#{hotel_addres}, hotel_phone=#{hotel_phone},
-		hotel_img=#{hotel_img}, hotel_category=#{hotel_category} where hotel_id=#{hotel_id}
+		update Hotel set hotel_addres=#{hotel_addres}, hotel_phone=#{hotel_phone},
+		hotel_img=#{hotel_img} where hotel_id=#{hotel_id}
 	</update>
 	
 	<delete id="delete" parameterType="int">

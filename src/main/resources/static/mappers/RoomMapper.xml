@@ -33,7 +33,7 @@
 	
 	<update id="update" parameterType="com.example.demo.room.Room">
 		update Room set room_type=#{room_type}, room_info=#{room_info}, price=#{price},
-		room_img=#{room_img}, room_name=#{room_name} where room_id=#{room_id}
+		room_img=#{room_img} where room_id=#{room_id}
 	</update>
 	
 	<delete id="delete" parameterType="int">

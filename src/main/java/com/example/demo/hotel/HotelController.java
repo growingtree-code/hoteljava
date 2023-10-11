@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -108,6 +109,62 @@ public class HotelController {
 		service.addHotel(h);
 		System.out.println(h);
 		return "redirect:hotelList";
+	}
+	
+	@RequestMapping(value="/hotel/edit")
+	public ModelAndView editform(HttpServletRequest req) {
+		
+		ModelAndView mav = new ModelAndView("hotel/edit");
+		ArrayList<Hotel> list = null;
+		
+		HttpSession session = req.getSession(false);
+		int type = (int) session.getAttribute("type");
+		String email = (String) session.getAttribute("email");
+		int userid = userservice.searchUserIdByEmail(email);
+				
+		if(type==0) {
+			list = (ArrayList<Hotel>) service.getHotelAll();
+		} else if(type==2) {
+			list = (ArrayList<Hotel>) service.getHotelBySeller(userid);
+		}
+		
+		System.out.println(list);
+		
+		mav.addObject("list",list);
+		
+		return mav;
+	}
+	
+	@PostMapping(value="/hotel/update")
+	public String edit(Hotel h) {
+		
+		if(!h.getHotel_imgfile().isEmpty()) {
+			String filename = saveImg(h.getHotel_id(), h.getHotel_imgfile());
+			h.setHotel_img(filename);
+		} else {
+			Hotel h2 = service.getHotelByNum(h.getHotel_id());
+			h.setHotel_img(h2.getHotel_img());
+		}
+		
+		service.editHotel(h);
+		return "index";
+	}
+	
+	@RequestMapping(value="/hotel/del")
+	public String del(int id) {
+		
+		service.delHotel(id);
+		return "index";
+	}
+	
+	@RequestMapping(value = "/hotel/getsub")
+	public ModelAndView getsub(@RequestParam(value = "id") int id) {
+		ModelAndView mav = new ModelAndView("hotel/getsub");
+		
+		ArrayList<Room> rlist = (ArrayList<Room>)roomservice.getRoomByHotelNum(id);
+		mav.addObject("rlist",rlist);
+		
+		return mav;
 	}
 	
 	@RequestMapping(value="/hotel/detail")

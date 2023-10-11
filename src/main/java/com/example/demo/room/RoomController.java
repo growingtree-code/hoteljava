@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -108,6 +109,28 @@ public class RoomController {
 //		
 //		return mav;
 //	}
+	
+	@PostMapping(value="/room/update")
+	public String edit(Room r) {
+		
+		if(!r.getRoom_imgfile().isEmpty()) {
+			String filename = saveImg(r.getRoom_id(), r.getRoom_imgfile());
+			r.setRoom_img(filename);
+		} else {
+			Room r2 = service.getRoomByNum(r.getRoom_id());
+			r.setRoom_img(r2.getRoom_img());
+		}
+		
+		service.editRoom(r);
+		return "index";
+	}
+	
+	@RequestMapping(value="/room/del")
+	public String del(int id) {
+		
+		service.delRoom(id);
+		return "index";
+	}
 	
 	
 	@RequestMapping("/room/img")

@@ -23,15 +23,15 @@ public class RoomService {
 		return mapper.selectByHotelNum(num);
 	}
 	
-	public List getHotelAll() {
+	public List getRoomAll() {
 		return mapper.selectAll();
 	}
 	
-	public void editHotel(Room r) {
+	public void editRoom(Room r) {
 		mapper.update(r);
 	}
 	
-	public void delHotel(int num) {
+	public void delRoom(int num) {
 		mapper.delete(num);
 	}
 	
