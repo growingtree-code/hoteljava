@@ -69,7 +69,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                         style="border-radius: 23px"
                       />
                     </div>
-                    <input type="hidden" id="addres" value="${h.hotel_addres }" />
+                    <input type="hidden" id="addres" value="${h.hotel_addres}" />
                     <div class="col-lg-4" id="map" style="border-radius: 23px;">
                     </div>
                   </div>
@@ -149,7 +149,12 @@ https://templatemo.com/tm-579-cyborg-gaming
                                   <a href="${pageContext.request.contextPath }/myCart">장바구니 담기 </a>
                               </div>
 	                        <div class="main-border-button">
-	                          <a href="${pageContext.request.contextPath }/payment">예약하기 </a>
+                                <form method="post" action="${pageContext.request.contextPath }/reservation">
+                                    <input type="hidden" name="room_id2" value="${r.room_id}">
+                                    <input type="submit" value="예약하기">
+                                </form>
+
+<%--	                          <a href="${pageContext.request.contextPath }/reservation">예약하기 </a>--%>
 	                        </div>
 	                      </div>
 	                    </div>

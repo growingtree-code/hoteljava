@@ -32,11 +32,11 @@ public class RoomController {
 	private HotelService hotelservice;
 	@Autowired
 	private UsersService userservice;
-	
-	public static String basePath = "C:\\roomimg\\";
+	/* 윈도우 */
+//	public static String basePath = "C:\\roomimg\\";
 
 	/* 이재혁 맥 */
-//	public static String basePath = "/Users/lee/hotelimg";
+	public static String basePath = "/Users/lee/hotelimg";
 	
 	public String saveImg(int num, MultipartFile file) {
 		String fileName = file.getOriginalFilename();
@@ -45,9 +45,10 @@ public class RoomController {
 			if (!dir.exists()) {
 				dir.mkdirs();
 			}
-			File f = new File(basePath + num + "\\" + fileName);
+			/* 윈도우 */
+//			File f = new File(basePath + num + "\\" + fileName);
 			/* 이재혁 맥 */
-//			File f = new File(basePath + num + "/" + fileName);
+			File f = new File(basePath + num + "/" + fileName);
 			try {
 				file.transferTo(f);
 			} catch (IllegalStateException e) {
@@ -72,7 +73,7 @@ public class RoomController {
 		
 		ArrayList<Hotel> hotellist = (ArrayList<Hotel>) hotelservice.getHotelBySeller(userid);
 		mav.addObject("hotellist",hotellist);
-		
+
 		return mav;
 	}
 	
@@ -136,9 +137,9 @@ public class RoomController {
 	@RequestMapping("/room/img")
 	public ResponseEntity<byte[]> getImg(String filename, int num) {
 		/* 이재혁 맥 */
-//		String path = basePath + num + "/" + filename;
-
-		String path = basePath + num + "\\" + filename;
+		String path = basePath + num + "/" + filename;
+		/* 윈도우 */
+//		String path = basePath + num + "\\" + filename;
 		File f = new File(path);
 		HttpHeaders header = new HttpHeaders();
 		ResponseEntity<byte[]> result = null;

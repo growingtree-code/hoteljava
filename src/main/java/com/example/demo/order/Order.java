@@ -7,7 +7,6 @@ import java.util.Date;
 
 @Data
 public class Order {
-	private int order_id;
 	private int payment_id;
 	private int user_id;
 	private int room_id2;

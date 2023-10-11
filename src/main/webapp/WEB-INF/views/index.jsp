@@ -317,7 +317,6 @@ https://templatemo.com/tm-579-cyborg-gaming
             <p>
               Copyright © 2036 <a href="#">Cyborg Gaming</a> Company. All rights
               reserved.
-
               <br />Design:
               <a
                 href="https://templatemo.com"

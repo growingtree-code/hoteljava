@@ -35,11 +35,11 @@ public class HotelController {
 	
 	@Autowired
 	private UsersService userservice;
-	
-	public static String basePath = "C:\\hotelimg\\";
+	/* 윈도우 */
+//	public static String basePath = "C:\\hotelimg\\";
 
 	/* 이재혁 맥 */
-//	public static String basePath = "/Users/lee/hotelimg";
+	public static String basePath = "/Users/lee/hotelimg";
 
 	public String saveImg(int num, MultipartFile file) {
 		String fileName = file.getOriginalFilename();
@@ -48,10 +48,11 @@ public class HotelController {
 			if (!dir.exists()) {
 				dir.mkdirs();
 			}
-			File f = new File(basePath + num + "\\" + fileName);
+			/* 윈도우 */
+//			File f = new File(basePath + num + "\\" + fileName);
 
 			/* 이재혁 맥 */
-//			File f = new File(basePath + num + "/" + fileName);
+			File f = new File(basePath + num + "/" + fileName);
 
 			try {
 				file.transferTo(f);
@@ -186,9 +187,9 @@ public class HotelController {
 	@RequestMapping("/hotel/img")
 	public ResponseEntity<byte[]> getImg(String filename, int num) {
 		/* 이재혁 맥 */
-//		String path = basePath + num + "/" + filename;
-
-		String path = basePath + num + "\\" + filename;
+		String path = basePath + num + "/" + filename;
+		/* 윈도우 */
+//		String path = basePath + num + "\\" + filename;
 		File f = new File(path);
 		HttpHeaders header = new HttpHeaders();
 		ResponseEntity<byte[]> result = null;

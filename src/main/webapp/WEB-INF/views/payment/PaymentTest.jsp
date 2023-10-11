@@ -46,6 +46,7 @@
                     dataType: 'json',
                     data: {
                         imp_uid : rsp.imp_uid
+
                         //기타 필요한 데이터가 있으면 추가 전달
                     }
                 }).done(function(data) {
