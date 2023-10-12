@@ -131,7 +131,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                           </div>
                         </a>
                       </div>
-                      <h4>${h.hotel_name}<br>
+                      <h4 style="display:inline-block; width:200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${h.hotel_name}<br>
                       <span>
                       	<c:choose>
                       		<c:when test="${h.hotel_category==1 }">
@@ -160,13 +160,13 @@ https://templatemo.com/tm-579-cyborg-gaming
                   <h6 style="margin-bottom: 30px;"><i class="fa fa-check">최근 한주 가장 많은 예약</i></h6>
                 </div>
                 <ul>
-                  <c:forEach begin="0" end="4" step="1">
+                  <c:forEach var="h" items="${list }" begin="0" end="4" varStatus="vs">
                     <li>
-                      <span>01</span>
-                      <img src="../assets/images/avatar-01.jpg" alt="" style="max-width: 46px; border-radius: 50%; margin-right: 15px;">
-                      <h6><i class="fa fa-check"></i> LahutaM</h6>
+                      <span>0${vs.count }</span>
+                      <img src="${pageContext.request.contextPath }/hotel/img?filename=${h.hotel_img}&num=${h.hotel_id}" alt="" style="width: 46px; height: 46px; border-radius: 50%; margin-right: 15px;">
+                      <h6 style="display:inline-block; width:115px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><i class="fa fa-check"></i> ${h.hotel_name}</h6>
                       <div class="main-button">
-                        <a href="#">Follow</a>
+                        <a href="${pageContext.request.contextPath }/hotel/detail?num=${h.hotel_id}">살펴보기</a>
                       </div>
                     </li>
                   </c:forEach>
@@ -185,29 +185,32 @@ https://templatemo.com/tm-579-cyborg-gaming
               </div>
             </div>
             <div class="row">
-              <c:forEach begin="0" end="7" step="1">
+              <c:forEach var="h" items="${list }" begin="0" end="7">
                 <div class="col-lg-3 col-sm-6">
                   <div class="item">
                     <div class="thumb">
-                      <img src="../assets/images/stream-05.jpg" alt="">
-                      <div class="hover-effect">
-                        <div class="content">
-                          <div class="live">
-                            <a href="#">Live</a>
-                          </div>
-                          <ul>
-                            <li><a href="#"><i class="fa fa-eye"></i> 1.2K</a></li>
-                            <li><a href="#"><i class="fa fa-gamepad"></i> CS-GO</a></li>
-                          </ul>
-                        </div>
-                      </div>
+                      <a href="${pageContext.request.contextPath }/hotel/detail?num=${h.hotel_id}">
+                      	  <img src="${pageContext.request.contextPath }/hotel/img?filename=${h.hotel_img}&num=${h.hotel_id}" alt="" width="261px" height="261px">
+	                  </a>
                     </div>
                     <div class="down-content">
-                      <div class="avatar">
-                        <img src="../assets/images/avatar-01.jpg" alt="" style="max-width: 46px; border-radius: 50%; float: left;">
-                      </div>
-                      <span><i class="fa fa-check"></i> Kengan Omeg</span>
-                      <h4>Just Talking With Fans</h4>
+                      <span><i class="fa fa-check"></i> ${h.hotel_name}</span>
+                      <p>
+                      	<c:choose>
+                      		<c:when test="${h.hotel_category==1 }">
+                      		호텔/리조트
+                      		</c:when>
+                      		<c:when test="${h.hotel_category==2 }">
+                      		펜션/풀빌라
+                      		</c:when>
+                      		<c:when test="${h.hotel_category==3 }">
+                      		모텔
+                      		</c:when>
+                      		<c:when test="${h.hotel_category==4 }">
+                      		게스트하우스
+                      		</c:when>
+                      	</c:choose>
+                      </p>
                     </div> 
                   </div>
                 </div>
@@ -215,7 +218,7 @@ https://templatemo.com/tm-579-cyborg-gaming
               
               <div class="col-lg-12">
                 <div class="main-button">
-                  <a href="streams.jsp">더 보기</a>
+                  <a href="${pageContext.request.contextPath }/hotel/category?cate=0">더 보기</a>
                 </div>
               </div>
             </div>

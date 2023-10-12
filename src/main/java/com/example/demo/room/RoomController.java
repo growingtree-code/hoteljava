@@ -33,10 +33,10 @@ public class RoomController {
 	@Autowired
 	private UsersService userservice;
 	/* 윈도우 */
-//	public static String basePath = "C:\\roomimg\\";
+	public static String basePath = "C:\\roomimg\\";
 
 	/* 이재혁 맥 */
-	public static String basePath = "/Users/lee/hotelimg";
+//	public static String basePath = "/Users/lee/hotelimg";
 	
 	public String saveImg(int num, MultipartFile file) {
 		String fileName = file.getOriginalFilename();
@@ -46,9 +46,9 @@ public class RoomController {
 				dir.mkdirs();
 			}
 			/* 윈도우 */
-//			File f = new File(basePath + num + "\\" + fileName);
+			File f = new File(basePath + num + "\\" + fileName);
 			/* 이재혁 맥 */
-			File f = new File(basePath + num + "/" + fileName);
+//			File f = new File(basePath + num + "/" + fileName);
 			try {
 				file.transferTo(f);
 			} catch (IllegalStateException e) {
@@ -71,9 +71,15 @@ public class RoomController {
 		String email = (String) session.getAttribute("email");
 		int userid = userservice.searchUserIdByEmail(email);
 		
-		ArrayList<Hotel> hotellist = (ArrayList<Hotel>) hotelservice.getHotelBySeller(userid);
-		mav.addObject("hotellist",hotellist);
-
+		int type = (int) session.getAttribute("type");
+		
+		if(type==0) {
+			ArrayList<Hotel> hotellist = (ArrayList<Hotel>) hotelservice.getHotelAll();
+			mav.addObject("hotellist",hotellist);
+		} else if(type==2) {
+			ArrayList<Hotel> hotellist = (ArrayList<Hotel>) hotelservice.getHotelBySeller(userid);
+			mav.addObject("hotellist",hotellist);
+		}
 		return mav;
 	}
 	
@@ -137,9 +143,9 @@ public class RoomController {
 	@RequestMapping("/room/img")
 	public ResponseEntity<byte[]> getImg(String filename, int num) {
 		/* 이재혁 맥 */
-		String path = basePath + num + "/" + filename;
+//		String path = basePath + num + "/" + filename;
 		/* 윈도우 */
-//		String path = basePath + num + "\\" + filename;
+		String path = basePath + num + "\\" + filename;
 		File f = new File(path);
 		HttpHeaders header = new HttpHeaders();
 		ResponseEntity<byte[]> result = null;

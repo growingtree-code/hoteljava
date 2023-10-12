@@ -63,6 +63,9 @@ https://templatemo.com/tm-579-cyborg-gaming
               <div class="row">
                 <div class="col-lg-12 header-text">
                   <c:choose>
+                  	<c:when test="${cate == 0 }">
+                  	  <h2>HOTEL JAVA</h2>
+                  	</c:when>
                   	<c:when test="${cate == 1 }">
                   	  <h2>호텔/리조트</h2>
                   	</c:when>
