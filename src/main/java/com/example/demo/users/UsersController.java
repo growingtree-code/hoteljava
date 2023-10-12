@@ -69,29 +69,23 @@ public class UsersController {
 			session.setAttribute("point", u2.getPoint());
 			session.setAttribute("type", u2.getType());
 
-//			if(u2.getType() == 0){
-//
-//				return "/users/adminPage";
-//			}
-//			return "users/main";
 			return "index";
 		}
 	}
-   
+
 	@RequestMapping(value = "/users/editForm")
-	public ModelAndView editForm(HttpServletRequest req){
+	public ModelAndView editForm(HttpServletRequest req,@RequestParam String email){
 		ModelAndView mav = new ModelAndView("users/editForm");
 		HttpSession session = req.getSession(false);
-		String id = (String)session.getAttribute("email");
-		Users m = service.getUsers(id);
-		mav.addObject("m", m);
+		Users u = service.getUsers(email);
+		mav.addObject("u", u);
 		return mav;
 	}
 
 	@RequestMapping(value = "/users/edit")
 	public String edit(Users m){
 		service.editUsers(m);
-		return "users/main";
+		return "index";
 	}
 
 	@RequestMapping(value = "/users/logout")
@@ -103,12 +97,14 @@ public class UsersController {
 	}
 	
 	@RequestMapping(value = "/users/out")
-	public String out(HttpServletRequest req){
+	public String out(HttpServletRequest req,@RequestParam String email){
 		HttpSession session = req.getSession(false);
-		String id = (String)session.getAttribute("email");
-		service.delUsers(id);
+//		String id = (String)session.getAttribute("email");
+		System.out.print("유저 삭제");
+		service.delUsers(email);
 		session.removeAttribute("email");
 		session.invalidate();
+
 		return "users/loginForm";
 	}
 
@@ -120,7 +116,6 @@ public class UsersController {
 
 	@RequestMapping(value = "/users/adminPage")
 	public ModelAndView adminPage() {
-
 		ModelAndView mav = new ModelAndView("users/adminPage");
 		ArrayList<Users> users = (ArrayList<Users>)service.getAllUsers();
 		mav.addObject("users", users);

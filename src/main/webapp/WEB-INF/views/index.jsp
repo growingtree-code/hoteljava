@@ -43,15 +43,6 @@
           <div class="page-content">
 
             <c:choose>
-              <c:when test="${sessionScope.type == 0}">
-                <c:set var="path" value="/users/adminPage" />
-              </c:when>
-              <c:otherwise>
-                <%-- 0이 아닌 경우 아무 작업도 수행하지 않음 --%>
-              </c:otherwise>
-            </c:choose>
-            
-            <c:choose>
               <c:when test="${sessionScope.type == 0 || sessionScope.type == 2}">
                 <c:set var="path2" value="/hotel/edit" />
               </c:when>
@@ -60,9 +51,6 @@
               </c:otherwise>
             </c:choose>
 
-            <c:if test="${!empty path}">
-              <c:import url="${path}" />
-            </c:if>
             <c:if test="${!empty path2}">
               <c:import url="${path2}" />
             </c:if>

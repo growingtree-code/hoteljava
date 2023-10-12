@@ -9,7 +9,7 @@ public interface UsersMapper {
 
 	void insert(Users u);
 
-	Users select(String id);
+	Users select(String email);
 
 	List userlist();
 

@@ -15,9 +15,7 @@ public class UsersService {
 		mapper.insert(u);
 	}
 
-	public Users getUsers(String id) {
-		return mapper.select(id);
-	}
+	public Users getUsers(String email) {return mapper.select(email);}
 
 	public List getAllUsers() {return mapper.userlist();}
 

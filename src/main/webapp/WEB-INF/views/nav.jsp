@@ -107,9 +107,11 @@ https://templatemo.com/tm-579-cyborg-gaming
                     <c:choose>
                         <c:when test="${sessionScope.name != null}">
                             <div class="dropdown-content">
-                                <a href="${pageContext.request.contextPath }/users/editForm">내정보수정</a>
+                                <a href="${pageContext.request.contextPath }/users/editForm?email=${sessionScope.email}">내정보수정</a>
                                 <a href="${pageContext.request.contextPath }/users/logout">로그아웃</a>
-                                <a href="${pageContext.request.contextPath }/users/out">탈퇴</a>
+                                <c:if test="${sessionScope.type!=0}">
+                                    <a href="${pageContext.request.contextPath }/users/out?email=${sessionScope.email}">탈퇴</a>
+                                </c:if>
                             </div>
                         </c:when>
                         <c:otherwise>
