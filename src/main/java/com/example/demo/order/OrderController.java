@@ -14,10 +14,12 @@ import org.apache.naming.factory.SendMailFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
 
 @Controller
 public class OrderController {
@@ -50,7 +52,6 @@ public class OrderController {
         HttpSession session = request.getSession();
         String email = (String) session.getAttribute("email");
         Hotel hotel = hotelservice.getHotelByNum(room.getHotel_id());
-        System.out.println(email);
         Users user = usersService.getUsers(email);
 
         request.setAttribute("R_room",room);
@@ -74,6 +75,34 @@ public class OrderController {
         orderService.addOrder(order);
         // 내 예약페이지로 가기
         return "/order/myCart";
+    }
+
+    @ResponseBody
+    @PostMapping(value = "/saveReservation")
+    public String saveReservation(@RequestParam Object order_start_date,
+                                  @RequestParam Object order_end_date,
+                                  @RequestParam int order_period,
+                                  @RequestParam int order_price,
+                                  @RequestParam int room_id2,
+                                  @RequestParam int user_id) throws ParseException {
+        Date orderStartDate = new SimpleDateFormat("yyyy-MM-dd").parse(String.valueOf(order_start_date));
+        Date orderEndDate = new SimpleDateFormat("yyyy-MM-dd").parse(String.valueOf(order_end_date));
+
+        Order order = new Order();
+        order.setOrder_period(order_period);
+        order.setOrder_price(order_price);
+        order.setOrder_end_date(orderStartDate);
+        order.setOrder_start_date(orderEndDate);
+        order.setRoom_id2(room_id2);
+        order.setUser_id(user_id);
+        //결제 완료
+        order.setOrder_state(1);
+        System.out.println(order);
+
+
+
+        orderService.addOrder(order);
+        return "/order/MyReservation";
     }
 
 }

@@ -13,9 +13,7 @@
 	</resultMap>
 
 	<insert id="insertPayment" parameterType="com.example.demo.payment.Payment">
-		insert into Payment
-		values(#{payment_id}, #{payment_method}, #{payment_total_price}, #{payment_flag},
-			   #{payment_time}, #{payment_uid})
+		insert into Payment values(Payment_seq.nextval, #{payment_method}, #{payment_total_price}, #{payment_flag},#{payment_time}, #{payment_uid})
 	</insert>
 
 	<select id="selectByPaymentId" parameterType="int"

@@ -4,10 +4,10 @@ import lombok.*;
 
 import java.util.Date;
 
+@ToString
 @Data
 public class Payment {
-    private int payment_id;
-    private int payment_method;
+    private String payment_method;
     private int payment_total_price;
     private int payment_flag;
     private Date payment_time;

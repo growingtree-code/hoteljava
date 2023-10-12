@@ -4,7 +4,7 @@ import com.example.demo.seller.Product;
 import lombok.*;
 
 import java.util.Date;
-
+@ToString
 @Data
 public class Order {
 	private int payment_id;
