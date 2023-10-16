@@ -1,7 +1,6 @@
 package com.example.demo.room;
 
 import org.springframework.web.multipart.MultipartFile;
-
 public class Room {
 	
 	private int room_id;

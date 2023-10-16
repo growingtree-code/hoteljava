@@ -21,6 +21,10 @@
 		select * from Payment where payment_id=#{payment_id}
 	</select>
 
+	<select id="selectPaymentIdByPaymentUid" parameterType="String" resultType="int">
+		select payment_id from Payment where payment_uid=#{payment_uid}
+	</select>
+
 	<!--	<update id="update" parameterType="com.example.demo.seller.Product">-->
 	<!--		update shopproduct set name=#{name}, price=#{price}, info=#{info},-->
 	<!--							   quantity=#{quantity} where num=#{num}-->

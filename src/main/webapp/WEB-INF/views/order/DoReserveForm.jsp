@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,7 +46,7 @@
       var seconds = today.getSeconds();  // 초
       var milliseconds = today.getMilliseconds();
       var makeMerchantUid = hours + minutes + seconds + milliseconds;
-      const totalPrice = $('#order_price').val();
+      const totalPrice = $('.order_price').val();
       const roomName = '${R_room.room_name}';
       const email = '${R_user.email}';
 
@@ -79,26 +80,6 @@
             })
 
           })
-          //         .done(function(data) {
-          //   //[2] 서버에서 REST API로 결제정보확인 및 서비스루틴이 정상적인 경우
-          //   if ( response.status == 200 ) {
-          //     var msg = '결제가 완료되었습니다.';
-          //     msg += '\n고유ID : ' + rsp.imp_uid;
-          //     msg += '\n상점 거래ID : ' + rsp.merchant_uid;
-          //     // msg += '\n결제 금액 : ' + rsp.paid_amount;
-          //     // msg += '카드 승인번호 : ' + rsp.apply_num;
-          //     window.location.href = "/index";
-          //     alert(msg);
-          //     console.log(msg);
-          //     form.submit();
-          //
-          //
-          //   } else {
-          //     //[3] 아직 제대로 결제가 되지 않았습니다.
-          //     console.log("제대로 안됨")
-          //     //[4] 결제된 금액이 요청한 금액과 달라 결제를 자동취소처리하였습니다.
-          //   }
-          // });
           if ( response.ok ) {
             var msg = '결제가 완료되었습니다.';
             msg += '\n고유ID : ' + rsp.imp_uid;
@@ -106,7 +87,7 @@
             // msg += '\n결제 금액 : ' + rsp.paid_amount;
             // msg += '카드 승인번호 : ' + rsp.apply_num;
             alert(msg);
-            const form = document.querySelector(".getReservation");
+            const form = document.querySelector(".SaveReservationForm");
             form.submit();
           }else { // 결제완료 후 DB저장 실패시
             alert(`error:[${response.status}]\n결제요청이 승인된 경우 관리자에게 문의바랍니다.`);
@@ -121,68 +102,6 @@
         }
       });
     }
-
-    // ----------------------------------------------
-    // 구매자 정보
-    // const username = "이재혁";
-    // const user_email = "ljh";
-    //
-    // // 결제창 함수 넣어주기
-    // const buyButton = document.getElementById('payment')
-    // buyButton.setAttribute('onclick', `kakaoPay('${user_email}', '${username}')`)
-    //
-    // var IMP = window.IMP;
-    //
-    // var today = new Date();
-    // var hours = today.getHours(); // 시
-    // var minutes = today.getMinutes();  // 분
-    // var seconds = today.getSeconds();  // 초
-    // var milliseconds = today.getMilliseconds();
-    // var makeMerchantUid = `${hours}` + `${minutes}` + `${seconds}` + `${milliseconds}`;
-    //
-    // function kakaoPay(useremail, username) {
-    //     if (confirm("구매 하시겠습니까?")) { // 구매 클릭시 한번 더 확인하기
-    //         if (localStorage.getItem("access")) { // 회원만 결제 가능
-    //             const emoticonName = document.getElementById('title').innerText
-    //
-    //             IMP.init("imp24438240"); // 가맹점 식별코드
-    //             IMP.request_pay({
-    //                 pg: 'kakaopay.TC0ONETIME', // PG사 코드표에서 선택
-    //                 pay_method: 'card', // 결제 방식
-    //                 merchant_uid: "IMP" + makeMerchantUid, // 결제 고유 번호
-    //                 name: '상품명', // 제품명
-    //                 amount: 100, // 가격
-    //                 //구매자 정보 ↓
-    //                 buyer_email: `${useremail}`,
-    //                 buyer_name: `${username}`,
-    //                 // buyer_tel : '010-1234-5678',
-    //                 // buyer_addr : '서울특별시 강남구 삼성동',
-    //                 // buyer_postcode : '123-456'
-    //             }, async function (rsp) { // callback
-    //                 if (rsp.success) { //결제 성공시
-    //                     console.log(rsp);
-    //                     //결제 성공시 프로젝트 DB저장 요청
-    //
-    //
-    //                     if (response.status == 200) { // DB저장 성공시
-    //                         alert('결제 완료!')
-    //                         window.location.reload();
-    //                     } else { // 결제완료 후 DB저장 실패시
-    //                         alert(`error:[${response.status}]\n결제요청이 승인된 경우 관리자에게 문의바랍니다.`);
-    //                         // DB저장 실패시 status에 따라 추가적인 작업 가능성
-    //                     }
-    //                 } else if (rsp.success == false) { // 결제 실패시
-    //                     alert(rsp.error_msg)
-    //                 }
-    //             });
-    //         }
-    //         else { // 비회원 결제 불가r
-    //             alert('로그인이 필요합니다!')
-    //         }
-    //     } else { // 구매 확인 알림창 취소 클릭시 돌아가기
-    //         return false;
-    //     }
-    // }
   </script>
 </head>
 
@@ -202,44 +121,7 @@
 <!-- ***** Preloader End ***** -->
 
 <!-- ***** Header Area Start ***** -->
-<header class="header-area header-sticky">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <nav class="main-nav">
-          <!-- ***** Logo Start ***** -->
-          <a href="${pageContext.request.contextPath }/index" class="logo">
-            <img src="assets/images/hotelJAVA.png" alt="" />
-          </a>
-          <!-- ***** Logo End ***** -->
-          <!-- ***** Search End ***** -->
-          <div class="search-input">
-            <form id="search" action="#">
-              <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword" onkeypress="handle" />
-              <i class="fa fa-search"></i>
-            </form>
-          </div>
-          <!-- ***** Search End ***** -->
-          <!-- ***** Menu Start ***** -->
-          <ul class="nav">
-            <li><a href="${pageContext.request.contextPath }/index" class="active">Home</a></li>
-            <li><a href="${pageContext.request.contextPath }/browse">Browse</a></li>
-            <li><a href="${pageContext.request.contextPath }/details">Details</a></li>
-            <li><a href="${pageContext.request.contextPath }/streams">Streams</a></li>
-            <li>
-              <a href="${pageContext.request.contextPath }/profile">Profile <img src="assets/images/profile-header.jpg" alt=""
-              /></a>
-            </li>
-          </ul>
-          <a class='menu-trigger'>
-            <span>Menu</span>
-          </a>
-          <!-- ***** Menu End ***** -->
-        </nav>
-      </div>
-    </div>
-  </div>
-</header>
+<%@ include file="../nav.jsp" %>
 <!-- ***** Header Area End ***** -->
 
 <div class="container">
@@ -249,54 +131,55 @@
         <div class="heading-section">
           <h4><em>숙소</em> 결제</h4>
         </div>
-        <!-- ***** Banner Start ***** -->
-        <form class="getReservation" action="${pageContext.request.contextPath }/saveReservation" method="post" onsubmit="requestPay()">
 
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="main-profile ">
-              <div class="row">
-                <div class="col-lg-4 align-self-center">
-                  <div class="main-info header-text">
-                    <span>${R_hotel.hotel_name}</span>
-                    <img src="${pageContext.request.contextPath }/hotel/img?filename=${R_hotel.hotel_img}&num=${R_hotel.hotel_id}" width="219px" height="370px" alt="">
-                    <br><br>
-                    <h3>${R_room.room_name}</h3>
-                    <br>
-                    <h5>${R_room.room_info}</h5>
-                    <br><br>
-                    <img src="${pageContext.request.contextPath }/room/img?filename=${R_room.room_img}&num=${R_room.room_id}" alt="" width="356px" height="264px" style="border-radius: 23px; margin-bottom: 30px"
-                    />
-                    <div class="main-border-button">
+        <form  class="SaveReservationForm getReservation" action="${pageContext.request.contextPath }/DoSave" method="post" onsubmit="requestPay()">
+
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="main-profile ">
+                <div class="row">
+                  <div class="col-lg-4 align-self-center">
+                    <div class="main-info header-text">
+                      <span>${R_hotel.hotel_name}</span>
+                      <img src="${pageContext.request.contextPath }/hotel/img?filename=${R_hotel.hotel_img}&num=${R_hotel.hotel_id}" width="219px" height="370px" alt="">
+                      <br><br>
+                      <h3>${R_room.room_name}</h3>
+                      <br>
+                      <h5>${R_room.room_info}</h5>
+                      <br><br>
+                      <img src="${pageContext.request.contextPath }/room/img?filename=${R_room.room_img}&num=${R_room.room_id}" alt="" width="356px" height="264px" style="border-radius: 23px; margin-bottom: 30px"
+                      />
+                      <div class="main-border-button">
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div>
-                <div class="item reservation-form">
-                  <ul>
-                    <li><h5><input type="date" class="datepicker" id="fromDate" name="order_start_date" placeholder="체크인 날짜 선택"></h5><span>체크인</span></li>
-                    <li><h5><input type="date" class="datepicker" id="toDate" name="order_end_date"placeholder="체크아웃 날짜 선택"></h5><span>체크아웃</span></li>
-                    <li><h5><input id="bak"></h5><span>숙박일</span></li>
-                    <input id="order_period" name="order_period" type="hidden">
-                    <li><h5><input id="order_price" name="order_price"></h5><span>금액</span></li>
-                  </ul>
+                <div>
+                  <div class="item reservation-form">
+                    <ul>
+                      <li><h5><input type="date" class="datepicker fromDate"  name="order_start_date" placeholder="체크인 날짜 선택"></h5><span>체크인</span></li>
+                      <li><h5><input type="date" class="datepicker toDate"  name="order_end_date"placeholder="체크아웃 날짜 선택"></h5><span>체크아웃</span></li>
+                      <li><h5><input class="bak"></h5><span>숙박일</span></li>
+                      <input class="order_period" name="order_period" type="hidden">
+                      <li><h5><input class="order_price" name="order_price"></h5><span>금액</span></li>
+                    </ul>
+                  </div>
                 </div>
-              </div>
 
 
-              <div class="row">
-                <div class="col-lg-12">
-                  <div class="clips">
-                    <div class="row">
-                      <div class="col-lg-12">
-                        <div class="main-button">
-                          <input type="hidden" name="user_id" value="${R_user.user_id}">
-
-                          <input type="hidden" name="room_id2" value="${R_room.room_id}">
-                          <input type="button" onclick="requestPay()" value=" 카카오페이 결제">
-                          <input type="submit" value=" 결제">
-<%--                          <a href="#">결제</a>--%>
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="clips">
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <div class="main-button">
+                            <input type="hidden" name="user_id" value="${R_user.user_id}">
+                            <input type="hidden" name="room_id2" value="${R_room.room_id}">
+                            <input type="hidden" name="hotel_id" value="${R_hotel.hotel_id}">
+                            <input type="button" onclick="requestPay()" value=" 카카오페이 결제">
+                            <input type="button" onclick="myCart()" value=" 장바구니 담기">
+                            <%--                          <a href="#">결제</a>--%>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -305,8 +188,11 @@
               </div>
             </div>
           </div>
-        </div>
         </form>
+
+
+        <!-- ***** Banner Start ***** -->
+
 
         <!-- ***** Banner End ***** -->
 
@@ -350,7 +236,7 @@
 
     $( ".datepicker" ).datepicker( "option", "showAnim", "slideDown" );
     //시작일.
-    $('#fromDate').datepicker({
+    $('.fromDate').datepicker({
       showOn: "focus",                     // 달력을 표시할 타이밍 (both: focus or button)
       dateFormat: "yy-mm-dd",             // 날짜의 형식
       changeMonth: true,                  // 월을 이동하기 위한 선택상자 표시여부
@@ -362,27 +248,27 @@
         pickDateAfter.setDate(pickDate.getDate() + 1);
         // 시작일(fromDate) datepicker가 닫힐때
         // 종료일(toDate)의 선택할수있는 최소 날짜(minDate)를 선택한 시작일로 지정
-        $("#toDate").datepicker( "option", "minDate", pickDateAfter );
-        const stay = getDateDiff($("#fromDate").val(), $("#toDate").val());
+        $(".toDate").datepicker( "option", "minDate", pickDateAfter );
+        const stay = getDateDiff($(".fromDate").val(), $(".toDate").val());
         const price = '${R_room.price}';
         if (isNaN(stay) == true){
-          $("#order_period").val("");
-          $("#bak").val("");
+          $(".order_period").val("");
+          $(".bak").val("");
         }
         else {
-          $("#bak").val(stay+"박 " + (stay+1)+"일");
-          $("#order_period").val(stay);
-          $("#order_price").val(price*stay);
+          $(".bak").val(stay+"박 " + (stay+1)+"일");
+          $(".order_period").val(stay);
+          $(".order_price").val(price*stay);
 
-          console.log($("#fromDate").val());
-          console.log($("#toDate").val());
+          console.log($(".fromDate").val());
+          console.log($(".toDate").val());
 
         }
       }
     });
 
     //종료일
-    $('#toDate').datepicker({
+    $('.toDate').datepicker({
       showOn: "focus",
       dateFormat: "yy-mm-dd",
       changeMonth: true,
@@ -391,18 +277,18 @@
       onClose: function( selectedDate ) {
         // 종료일(toDate) datepicker가 닫힐때
         // 시작일(fromDate)의 선택할수있는 최대 날짜(maxDate)를 선택한 종료일로 지정
-        $("#fromDate").datepicker( "option", "maxDate", selectedDate );
-        const stay = getDateDiff($("#fromDate").val(), $("#toDate").val());
+        $(".fromDate").datepicker( "option", "maxDate", selectedDate );
+        const stay = getDateDiff($(".fromDate").val(), $(".toDate").val());
         const price = '${R_room.price}';
 
         if (isNaN(stay) == true){
-          $("#order_period").val("");
-          $("#bak").val("");
+          $(".order_period").val("");
+          $(".bak").val("");
         }
         else {
-          $("#bak").val(stay+"박 " + (stay+1)+"일");
-          $("#order_period").val(stay);
-          $("#order_price").val(price*stay);
+          $(".bak").val(stay+"박 " + (stay+1)+"일");
+          $(".order_period").val(stay);
+          $(".order_price").val(price*stay);
 
         }
       }
@@ -428,7 +314,13 @@
     yearSuffix: '년'
   });
 </script>
-
+<script>
+  function myCart(){
+    $(".SaveReservationForm").attr("action","${pageContext.request.contextPath }/saveToMyCart")
+  const form = document.querySelector(".SaveReservationForm");
+  form.submit();
+  }
+</script>
 <style>
   .ui-widget-header { border: 0px solid #dddddd; background: #fff; }
 

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.ohr.OhrMapper">
+    <resultMap type="com.example.demo.ohr.OHR" id="OHRResult">
+        <result column="order_id" property="order_id" />
+        <result column="payment_id" property="payment_id" />
+        <result column="hotel_id" property="hotel_id" />
+        <result column="user_id" property="user_id" />
+        <result column="room_id2" property="room_id2" />
+        <result column="order_start_date" property="order_start_date" />
+        <result column="order_end_date" property="order_end_date" />
+        <result column="order_period" property="order_period" />
+        <result column="order_price" property="order_price" />
+        <result column="order_state" property="order_state" />
+        <result column="hotel_name" property="hotel_name" />
+        <result column="hotel_addres" property="hotel_addres" />
+        <result column="hotel_phone" property="hotel_phone" />
+        <result column="hotel_img" property="hotel_img" />
+        <result column="hotel_category" property="hotel_category" />
+        <result column="room_id" property="room_id" />
+        <result column="room_type" property="room_type" />
+        <result column="room_info" property="room_info" />
+        <result column="price" property="price" />
+        <result column="room_img" property="room_img" />
+        <result column="room_name" property="room_name" />
+    </resultMap>
+    <select id="selectAllOHRByUserId" resultMap="OHRResult">
+        SELECT o.*,
+               h.hotel_img,
+               h.hotel_name,
+               h.hotel_addres,
+               h.hotel_phone,
+               h.hotel_category,
+               r.room_id,
+               r.room_type,
+               r.room_info,
+               r.price,
+               r.room_img,
+               r.room_name
+        FROM Orders o
+                 JOIN Hotel h ON o.hotel_id = h.hotel_id
+                 JOIN Room r ON o.room_id2 = r.room_id
+        WHERE o.user_id = #{user_id} AND o.order_state = 1
+    </select>
+    <select id="selectCartAllOHRByUserId" resultMap="OHRResult">
+        SELECT o.*,
+               h.hotel_img,
+               h.hotel_name,
+               h.hotel_addres,
+               h.hotel_phone,
+               h.hotel_category,
+               r.room_id,
+               r.room_type,
+               r.room_info,
+               r.price,
+               r.room_img,
+               r.room_name
+        FROM Orders o
+                 JOIN Hotel h ON o.hotel_id = h.hotel_id
+                 JOIN Room r ON o.room_id2 = r.room_id
+        WHERE o.user_id = #{user_id} AND o.order_state = 0
+    </select>
+</mapper>

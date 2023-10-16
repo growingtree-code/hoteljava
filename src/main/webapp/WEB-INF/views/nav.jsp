@@ -109,6 +109,8 @@ https://templatemo.com/tm-579-cyborg-gaming
                             <div class="dropdown-content">
                                 <a href="${pageContext.request.contextPath }/users/editForm?email=${sessionScope.email}">내정보수정</a>
                                 <a href="${pageContext.request.contextPath }/users/logout">로그아웃</a>
+                                <a href="${pageContext.request.contextPath }/myOrder">내 주문 내역</a>
+                                <a href="${pageContext.request.contextPath }/MyCart">내 장바구니</a>
                                 <c:if test="${sessionScope.type!=0}">
                                     <a href="${pageContext.request.contextPath }/users/out?email=${sessionScope.email}">탈퇴</a>
                                 </c:if>

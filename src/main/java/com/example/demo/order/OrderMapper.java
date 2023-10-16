@@ -1,9 +1,8 @@
 package com.example.demo.order;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
+import com.example.demo.ohr.OHR;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
@@ -16,5 +15,10 @@ public interface OrderMapper {
     ArrayList<Order> selectAllByUserId(int user_id);
 
     void deleteOrder(int order_id);
+
+    void updateByOrderId(Order order);
+
+    void deleteFromCart(int order_id);
+
 
 }

@@ -15,6 +15,9 @@ public class PaymentService {
     Payment searchByPaymentId(int payment_id) {
      return mapper.selectByPaymentId(payment_id);
     }
+    public int searchPaymentIdByPaymentUid(String payment_uid){
+        return mapper.selectPaymentIdByPaymentUid(payment_uid);
+    }
 
     void deletePayment(int payment_id) {
         mapper.deletePayment(payment_id);

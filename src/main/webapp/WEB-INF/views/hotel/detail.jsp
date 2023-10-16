@@ -145,13 +145,11 @@ https://templatemo.com/tm-579-cyborg-gaming
                               </p>
 	                      </div>
 	                      <div class="col-lg-12">
-                              <div class="main-border-button">
-                                  <a href="${pageContext.request.contextPath }/myCart">장바구니 담기 </a>
-                              </div>
+
 	                        <div class="main-border-button">
-                                <form method="post" action="${pageContext.request.contextPath }/reservation">
+                                <form method="post" action="${pageContext.request.contextPath }/Reservation">
                                     <input type="hidden" name="room_id2" value="${r.room_id}">
-                                    <input type="submit" value="예약하기">
+                                    <input type="submit" value="날짜 선택하기">
                                 </form>
 
 <%--	                          <a href="${pageContext.request.contextPath }/reservation">예약하기 </a>--%>

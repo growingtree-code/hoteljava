@@ -15,9 +15,11 @@
 		<result column="order_state" property="order_state" />
 	</resultMap>
 
+
+
 	<insert id="insertOrder" parameterType="com.example.demo.order.Order">
 		insert into Orders
-		values(Orders_seq.nextval, #{payment_id}, #{user_id}, #{room_id2}, #{order_start_date},
+		values(Orders_seq.nextval, #{payment_id},#{hotel_id}, #{user_id}, #{room_id2}, #{order_start_date},
 			   #{order_end_date}, #{order_period}, #{order_price}, #{order_state})
 	</insert>
 
@@ -30,13 +32,33 @@
 			resultMap="OrderResult">
 		select * from Orders where user_id=#{user_id}  order by order_id
 	</select>
+	<update id="updateByOrderId" parameterType="com.example.demo.order.Order">
+		UPDATE Orders
+		SET
+			payment_id = #{payment_id},
+			hotel_id = #{hotel_id},
+			user_id = #{user_id},
+			room_id2 = #{room_id2},
+			order_start_date = #{order_start_date},
+			order_end_date = #{order_end_date},
+			order_period = #{order_period},
+			order_price = #{order_price},
+			order_state = #{order_state}
+		WHERE order_id = #{order_id} and order_state = 0
 
-
-
-
-	<select id="selectAllByUserId" resultMap="OrderResult">
-		select * from Orders where user_id=#{user_id} order by order_id desc
+	</update>
+	<select id="selectOrderByOrderId" parameterType="int">
+		select * from Orders where order_id = #{order_id}
 	</select>
+
+	<delete id="deleteFromCart" parameterType="int">
+		delete From Orders where order_id = #{order_id}
+	</delete>
+
+
+
+
+
 
 <!--	<update id="update" parameterType="com.example.demo.seller.Product">-->
 <!--		update shopproduct set name=#{name}, price=#{price}, info=#{info},-->

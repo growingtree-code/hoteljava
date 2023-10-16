@@ -34,16 +34,14 @@ public class PaymentController {
         return "payment/Payment";
     }
 
-    @ResponseBody
+
     @PostMapping(value ="/payment/complete")
     public void paymentComplete(HttpServletRequest request , @RequestBody Payment payment){
-        System.out.println("넘어옴");
-        System.out.println(payment);
         HttpSession session = request.getSession();
-        session.removeAttribute("R_room");
-        session.removeAttribute("R_room");
-        session.removeAttribute("hotel");
-
+        session.setAttribute("payment",payment);
+        Payment payment1 = (Payment)session.getAttribute("payment");
+        System.out.println(payment1);
         service.addPayment(payment);
+
     }
 }

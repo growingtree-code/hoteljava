@@ -10,4 +10,5 @@ public interface PaymentMapper {
 
     void deletePayment(int payment_id);
 
+    int selectPaymentIdByPaymentUid(String payment_uid);
 }

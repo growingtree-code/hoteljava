@@ -1,10 +1,8 @@
 package com.example.demo.order;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
+import com.example.demo.ohr.OHR;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +11,7 @@ public class OrderService {
 
     @Autowired
     private OrderMapper mapper;
+
 
     public void addOrder(Order order){
         mapper.insertOrder(order);
@@ -34,4 +33,13 @@ public class OrderService {
         mapper.deleteOrder(order_id);
     }
 
+    public void updateByOrderId(Order order) {
+        mapper.updateByOrderId(order);
+    }
+    public Order selectOrderByOrderId(int order_id){
+        return mapper.selectByOrderId(order_id);
+    }
+    public void deleteFromCart(int order_id) {
+        mapper.deleteFromCart(order_id);
+    }
 }

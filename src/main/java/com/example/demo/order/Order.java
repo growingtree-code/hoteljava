@@ -1,13 +1,14 @@
 package com.example.demo.order;
 
-import com.example.demo.seller.Product;
 import lombok.*;
 
 import java.util.Date;
 @ToString
 @Data
 public class Order {
+	private int order_id;
 	private int payment_id;
+	private int hotel_id;
 	private int user_id;
 	private int room_id2;
 	private Date order_start_date;
