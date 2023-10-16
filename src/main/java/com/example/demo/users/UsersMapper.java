@@ -11,7 +11,11 @@ public interface UsersMapper {
 
 	Users select(String email);
 
-	List userlist();
+//	List userlist();
+
+	public List<Users> getListPaging(Page p);
+
+	public int getTotal();
 
 	void update(Users u);
 

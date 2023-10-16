@@ -13,9 +13,26 @@
 		<result column="type" property="type" />
 	</resultMap>
 
-	<select id="userlist" resultMap="UsersResult">
-		select * from users where type in(1,2) order by user_id
+	<select id="getListPaging" resultMap="UsersResult">
+		<![CDATA[
+			SELECT *
+			FROM (
+					 SELECT a.*, ROWNUM rnum
+					 FROM (SELECT * FROM users) a
+					 WHERE ROWNUM <= (#{pageNum} * #{amount}+1)
+				 )
+			WHERE rnum > (#{pageNum}-1) * #{amount}+1
+			]]>
 	</select>
+
+	<select id="getTotal" resultType="int">
+		select count(*)-1 from users
+	</select>
+
+<!--선-->
+<!--	<select id="userlist" resultMap="UsersResult">-->
+<!--		select * from users where type in(1,2) order by user_id-->
+<!--	</select>-->
 
 	<select id="select" resultMap="UsersResult" parameterType="String">
 		select * from users where email = #{email}

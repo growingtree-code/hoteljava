@@ -23,6 +23,17 @@
 	<link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script >
+		$(document).ready(function() {
+			$(".pageInfo_area a").click(function(e) {
+				e.preventDefault();
+				$("#moveForm").find("input[name='pageNum']").val($(this).attr("href"));
+				$("#moveForm").attr("action", "/users/adminPage");
+				$("#moveForm").submit();
+			});
+		});
+
+	</script>
 
 </head>
 <body>
@@ -94,7 +105,27 @@
 													</table>
 													<div class="col-lg-12" style="padding: 10px 30px">
 														<div class="row justify-content-md-center" style="color: white">
-															페이징 처리 공간
+															<div class="pageInfo_wrap" style="display: contents;">
+																<div class="pageInfo_area" style="display: inline-block;">
+																	<!-- 이전페이지 버튼 -->
+																	<c:if test="${pageMaker.prev}">
+																		<li class="pageInfo_btn previous"><a href="${pageMaker.startPage-1}" style="color: #ec6090; margin-right: 15px">이전</a></li>
+																	</c:if>
+																	<!-- 각 번호 페이지 버튼 -->
+																	<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+																		<li class="pageInfo_btn"><a href="${num}" style="margin-left: 5px;margin-right: 5px">${num}</a></li>
+																	</c:forEach>
+																	<!-- 다음페이지 버튼 -->
+																	<c:if test="${pageMaker.next}">
+																		<li class="pageInfo_btn next"><a href="${pageMaker.endPage + 1 }" style="color: #ec6090; margin-left: 15px">다음</a></li>
+																	</c:if>
+																</div>
+															</div>
+															<%--수정페이지로 이동한 뒤 돌아올경우 선택한 페이지로 돌아오기위한 form--%>
+															<form id="moveForm" method="get">
+																<input type="hidden" name="pageNum" value="${pageMaker.p.pageNum}">
+																<input type="hidden" name="amount" value="${pageMaker.p.amount}">
+															</form>
 														</div>
 													</div>
 												</div>
@@ -139,5 +170,13 @@
 		padding: 10px;
 		border-bottom: 1px solid white;
 	}
+
+	.pageInfo_area li{
+		display: inline-block;
+	}
+
+	a:link {color:white; text-decoration: none;}
+	a:visited {color:white; text-decoration: none;}
+	a:hover {color:white; text-decoration: underline;}
 </style>
 </html>

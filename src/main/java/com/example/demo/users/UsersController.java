@@ -114,11 +114,30 @@ public class UsersController {
 	}
 
 
+	//기존 adminPage
+//	@RequestMapping(value = "/users/adminPage")
+//	public ModelAndView adminPage() {
+//		ModelAndView mav = new ModelAndView("users/adminPage");
+//		ArrayList<Users> users = (ArrayList<Users>)service.getAllUsers();
+//		mav.addObject("users", users);
+//		return mav;
+//	}
+
+	//페이징 처리 adminPage
 	@RequestMapping(value = "/users/adminPage")
-	public ModelAndView adminPage() {
+	public ModelAndView adminPage(Page p) {
+
 		ModelAndView mav = new ModelAndView("users/adminPage");
-		ArrayList<Users> users = (ArrayList<Users>)service.getAllUsers();
+		ArrayList<Users> users = (ArrayList<Users>)service.getListPaging(p);
+
 		mav.addObject("users", users);
+
+		int total = service.getTotal();
+
+		PageMaker pageMake = new PageMaker(p,total);
+
+		mav.addObject("pageMaker", pageMake);
+		System.out.print(pageMake);
 		return mav;
 	}
 
