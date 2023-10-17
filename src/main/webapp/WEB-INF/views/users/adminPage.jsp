@@ -113,7 +113,7 @@
 																	</c:if>
 																	<!-- 각 번호 페이지 버튼 -->
 																	<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-																		<li class="pageInfo_btn"><a href="${num}" style="margin-left: 5px;margin-right: 5px">${num}</a></li>
+																		<li class="pageInfo_btn ${pageMaker.p.pageNum == num ? "active":"" }"><a href="${num}" style="margin-left: 5px;margin-right: 5px">${num}</a></li>
 																	</c:forEach>
 																	<!-- 다음페이지 버튼 -->
 																	<c:if test="${pageMaker.next}">
@@ -178,5 +178,9 @@
 	a:link {color:white; text-decoration: none;}
 	a:visited {color:white; text-decoration: none;}
 	a:hover {color:white; text-decoration: underline;}
+	.pageInfo_area .active{
+		background-color: #744285;
+		border-radius: 15px;
+	}
 </style>
 </html>

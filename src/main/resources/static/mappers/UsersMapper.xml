@@ -29,11 +29,6 @@
 		select count(*)-1 from users
 	</select>
 
-<!--선-->
-<!--	<select id="userlist" resultMap="UsersResult">-->
-<!--		select * from users where type in(1,2) order by user_id-->
-<!--	</select>-->
-
 	<select id="select" resultMap="UsersResult" parameterType="String">
 		select * from users where email = #{email}
 	</select>
