@@ -53,7 +53,7 @@
                                 <div class="align-self-center"style="display: flex; align-items: center;">
                                     <%--로그인 이미지--%>
                                     <div class="col-lg-4" style="width:25%;margin:1% 10% 1% 10%;">
-                                        <img src="../assets/images/profile.jpg" alt="" style="border-radius: 23px;">
+                                        <img src="../assets/images/hotelJavaLogin.gif" alt="" style="width: 370px; height: auto; border-radius: 23px;">
                                     </div>
                                     <form id="login_btn" action="${pageContext.request.contextPath }/users/login" method="post">
                                         <div class="main-info header-text">

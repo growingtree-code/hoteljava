@@ -103,7 +103,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                 </c:if>
                 <li class="dropdown"><a class="dropbtn" href="${pageContext.request.contextPath }/users/loginForm">
                   ${sessionScope.name}<span id ="logintxt" style="">로그인</span>
-                  <img src="../assets/images/profile-header.jpg" alt="" id="basic_proimg"style=""/></a>
+                  <img src="../assets/images/userLogo.png" alt="" id="basic_proimg"style="width: 36px; height: auto;"/></a>
                     <c:choose>
                         <c:when test="${sessionScope.name != null}">
                             <div class="dropdown-content">

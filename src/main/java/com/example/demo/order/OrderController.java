@@ -168,8 +168,8 @@ public class OrderController {
         order.setPayment_id(paymentId);
         order.setOrder_period(order_period);
         order.setOrder_price(order_price);
-        order.setOrder_end_date(orderStartDate);
-        order.setOrder_start_date(orderEndDate);
+        order.setOrder_start_date(orderStartDate);
+        order.setOrder_end_date(orderEndDate);
         order.setRoom_id2(room_id2);
         order.setUser_id(user_id);
         //결제 완료
