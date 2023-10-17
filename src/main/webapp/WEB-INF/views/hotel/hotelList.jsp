@@ -49,65 +49,65 @@ https://templatemo.com/tm-579-cyborg-gaming
   <!-- ***** Preloader End ***** -->
 
   <!-- ***** Header Area Start ***** -->
-  <%@ include file="../nav.jsp" %>
+<%--  index에서 불러올때 겹쳐 임시로 주석처리--%>
+<%--    <%@ include file="../nav.jsp" %>--%>
   <!-- ***** Header Area End ***** -->
 
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
         <div class="page-content">
-        
           <!-- ***** Category Start ***** -->
           <div class="live-stream" style="padding:15px; margin: 0 0 60px 0;">
             <div class="row justify-content-evenly">
-                <div class="col-lg-1">
-                  <div>
-                    <a href="${pageContext.request.contextPath }/hotel/listpage?cate=1">
-                      <div class="thumb">
-                        <img src="../assets/images/hotel.png" alt="">
-                      </div>
-                      <div class="down-content" style="text-align: center;">
-                        <p style="color: white; font-size: 11px;">호텔/리조트</p>
-                      </div>
-                    </a> 
-                  </div>
+              <div class="col-lg-1">
+                <div>
+                  <a href="${pageContext.request.contextPath }/hotel/listpage?cate=1">
+                    <div class="thumb">
+                      <img src="../assets/images/hotel.png" alt="">
+                    </div>
+                    <div class="down-content" style="text-align: center;">
+                      <p style="color: white; font-size: 11px;">호텔/리조트</p>
+                    </div>
+                  </a>
                 </div>
-                <div class="col-lg-1">
-                  <div>
-                    <a href="${pageContext.request.contextPath }/hotel/listpage?cate=2">
-                      <div class="thumb">
-                        <img src="../assets/images/pool.png" alt="">
-                      </div>
-                      <div class="down-content" style="text-align: center;">
-                        <p style="color: white; font-size: 11px;">펜션/풀빌라</p>
-                      </div>
-                    </a>
-                  </div>
+              </div>
+              <div class="col-lg-1">
+                <div>
+                  <a href="${pageContext.request.contextPath }/hotel/listpage?cate=2">
+                    <div class="thumb">
+                      <img src="../assets/images/pool.png" alt="">
+                    </div>
+                    <div class="down-content" style="text-align: center;">
+                      <p style="color: white; font-size: 11px;">펜션/풀빌라</p>
+                    </div>
+                  </a>
                 </div>
-                <div class="col-lg-1">
-                  <div>
-                    <a href="${pageContext.request.contextPath }/hotel/listpage?cate=3">
-                      <div class="thumb">
-                        <img src="../assets/images/motel.png" alt="">
-                      </div>
-                      <div class="down-content" style="text-align: center;">
-                        <p style="color: white; font-size: 11px;">모텔</p>
-                      </div>
-                    </a>
-                  </div>
+              </div>
+              <div class="col-lg-1">
+                <div>
+                  <a href="${pageContext.request.contextPath }/hotel/listpage?cate=3">
+                    <div class="thumb">
+                      <img src="../assets/images/motel.png" alt="">
+                    </div>
+                    <div class="down-content" style="text-align: center;">
+                      <p style="color: white; font-size: 11px;">모텔</p>
+                    </div>
+                  </a>
                 </div>
-                <div class="col-lg-1">
-                  <div>
-                    <a href="${pageContext.request.contextPath }/hotel/listpage?cate=4">
-                      <div class="thumb">
-                        <img src="../assets/images/guesthouse.png" alt="">
-                      </div>
-                      <div class="down-content" style="text-align: center;">
-                        <p style="color: white; font-size: 11px;">게스트 하우스</p>
-                      </div>
-                    </a>
-                  </div>
+              </div>
+              <div class="col-lg-1">
+                <div>
+                  <a href="${pageContext.request.contextPath }/hotel/listpage?cate=4">
+                    <div class="thumb">
+                      <img src="../assets/images/guesthouse.png" alt="">
+                    </div>
+                    <div class="down-content" style="text-align: center;">
+                      <p style="color: white; font-size: 11px;">게스트 하우스</p>
+                    </div>
+                  </a>
                 </div>
+              </div>
             </div>
           </div>
           <!-- ***** Category End ***** -->
@@ -122,9 +122,9 @@ https://templatemo.com/tm-579-cyborg-gaming
                 </div>
                 <div class="owl-features owl-carousel">
                   <c:forEach var="h" items="${list }" begin="0" end="6">
-                  	<div class="item">
+                    <div class="item">
                       <div class="thumb">
-                      	<a href="${pageContext.request.contextPath }/hotel/detail?num=${h.hotel_id}">
+                        <a href="${pageContext.request.contextPath }/hotel/detail?num=${h.hotel_id}">
                           <img src="${pageContext.request.contextPath }/hotel/img?filename=${h.hotel_img}&num=${h.hotel_id}" width="219px" height="370px" alt="">
                           <div class="hover-effect">
                             <h6>살펴보기</h6>
@@ -132,21 +132,21 @@ https://templatemo.com/tm-579-cyborg-gaming
                         </a>
                       </div>
                       <h4 style="display:inline-block; width:200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${h.hotel_name}<br>
-                      <span>
+                        <span>
                       	<c:choose>
-                      		<c:when test="${h.hotel_category==1 }">
-                      		호텔/리조트
-                      		</c:when>
-                      		<c:when test="${h.hotel_category==2 }">
-                      		펜션/풀빌라
-                      		</c:when>
-                      		<c:when test="${h.hotel_category==3 }">
-                      		모텔
-                      		</c:when>
-                      		<c:when test="${h.hotel_category==4 }">
-                      		게스트하우스
-                      		</c:when>
-                      	</c:choose>
+                          <c:when test="${h.hotel_category==1 }">
+                            호텔/리조트
+                          </c:when>
+                          <c:when test="${h.hotel_category==2 }">
+                            펜션/풀빌라
+                          </c:when>
+                          <c:when test="${h.hotel_category==3 }">
+                            모텔
+                          </c:when>
+                          <c:when test="${h.hotel_category==4 }">
+                            게스트하우스
+                          </c:when>
+                        </c:choose>
                       </span></h4>
                     </div>
                   </c:forEach>
@@ -190,32 +190,32 @@ https://templatemo.com/tm-579-cyborg-gaming
                   <div class="item">
                     <div class="thumb">
                       <a href="${pageContext.request.contextPath }/hotel/detail?num=${h.hotel_id}">
-                      	  <img src="${pageContext.request.contextPath }/hotel/img?filename=${h.hotel_img}&num=${h.hotel_id}" alt="" width="261px" height="261px">
-	                  </a>
+                        <img src="${pageContext.request.contextPath }/hotel/img?filename=${h.hotel_img}&num=${h.hotel_id}" alt="" width="261px" height="261px">
+                      </a>
                     </div>
                     <div class="down-content">
                       <span><i class="fa fa-check"></i> ${h.hotel_name}</span>
                       <p>
-                      	<c:choose>
-                      		<c:when test="${h.hotel_category==1 }">
-                      		호텔/리조트
-                      		</c:when>
-                      		<c:when test="${h.hotel_category==2 }">
-                      		펜션/풀빌라
-                      		</c:when>
-                      		<c:when test="${h.hotel_category==3 }">
-                      		모텔
-                      		</c:when>
-                      		<c:when test="${h.hotel_category==4 }">
-                      		게스트하우스
-                      		</c:when>
-                      	</c:choose>
+                        <c:choose>
+                          <c:when test="${h.hotel_category==1 }">
+                            호텔/리조트
+                          </c:when>
+                          <c:when test="${h.hotel_category==2 }">
+                            펜션/풀빌라
+                          </c:when>
+                          <c:when test="${h.hotel_category==3 }">
+                            모텔
+                          </c:when>
+                          <c:when test="${h.hotel_category==4 }">
+                            게스트하우스
+                          </c:when>
+                        </c:choose>
                       </p>
-                    </div> 
+                    </div>
                   </div>
                 </div>
               </c:forEach>
-              
+
               <div class="col-lg-12">
                 <div class="main-button">
                   <a href="${pageContext.request.contextPath }/hotel/listpage">더 보기</a>
@@ -229,19 +229,6 @@ https://templatemo.com/tm-579-cyborg-gaming
       </div>
     </div>
   </div>
-  
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <p>Copyright © 2036 <a href="#">Cyborg Gaming</a> Company. All rights reserved. 
-          
-          <br>Design: <a href="https://templatemo.com" target="_blank" title="free CSS templates">TemplateMo</a>  Distributed By <a href="https://themewagon.com" target="_blank" >ThemeWagon</a></p>
-        </div>
-      </div>
-    </div>
-  </footer>
-
 
   <!-- Scripts -->
   <!-- Bootstrap core JavaScript -->

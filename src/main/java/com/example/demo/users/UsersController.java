@@ -69,6 +69,8 @@ public class UsersController {
 			session.setAttribute("point", u2.getPoint());
 			session.setAttribute("type", u2.getType());
 
+			System.out.println("로그인 성공");
+
 			return "index";
 		}
 	}
