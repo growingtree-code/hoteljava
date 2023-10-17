@@ -83,7 +83,7 @@ https://templatemo.com/tm-579-cyborg-gaming
               <!-- ***** Logo End ***** -->
               <!-- ***** Search End ***** -->
               <div class="search-input">
-                <form id="search" action="${pageContext.request.contextPath }/hotel/search" method="post">
+                <form id="search" action="${pageContext.request.contextPath }/hotel/listpage" method="post">
                   <input type="text" placeholder="Type Something" id='searchText' name="keyword" />
                   <i class="fa fa-search"></i>
                 </form>

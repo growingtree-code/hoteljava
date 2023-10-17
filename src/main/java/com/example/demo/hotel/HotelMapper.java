@@ -11,8 +11,6 @@ public interface HotelMapper {
 	
 	Hotel selectByNum(int num);
 	List selectByName(String name);
-	List selectByCategory(int cate);
-	List selectByKeyword(String keyword);
 	List selectBySeller(int user_id);
 	List selectAll();
 	
@@ -20,4 +18,7 @@ public interface HotelMapper {
 	void delete(int num);
 	
 	int getNum();
+	
+	int getTotal(PageVO vo);
+	List getHotelPaging(PageVO vo);
 }

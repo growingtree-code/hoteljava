@@ -22,15 +22,7 @@ public class HotelService {
 	public List getHotelByName(String name) {
 		return mapper.selectByName(name);
 	}
-	
-	public List getHotelByCategory(int cate) {
-		return mapper.selectByCategory(cate);
-	}
-	
-	public List getHotelByKeyword(String keyword) {
-		return mapper.selectByKeyword(keyword);
-	}
-	
+
 	public List getHotelBySeller(int user_id) {
 		return mapper.selectBySeller(user_id);
 	}
@@ -49,6 +41,14 @@ public class HotelService {
 	
 	public int getNum() {
 		return mapper.getNum();
+	}
+	
+	public int getTotal(PageVO vo) {
+		return mapper.getTotal(vo);
+	}
+	
+	public List getHotelPaging(PageVO vo) {
+		return mapper.getHotelPaging(vo);
 	}
 	
 }

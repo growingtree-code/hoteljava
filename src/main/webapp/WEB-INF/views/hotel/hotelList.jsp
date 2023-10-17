@@ -62,7 +62,7 @@ https://templatemo.com/tm-579-cyborg-gaming
             <div class="row justify-content-evenly">
                 <div class="col-lg-1">
                   <div>
-                    <a href="${pageContext.request.contextPath }/hotel/category?cate=1">
+                    <a href="${pageContext.request.contextPath }/hotel/listpage?cate=1">
                       <div class="thumb">
                         <img src="../assets/images/hotel.png" alt="">
                       </div>
@@ -74,7 +74,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                 </div>
                 <div class="col-lg-1">
                   <div>
-                    <a href="${pageContext.request.contextPath }/hotel/category?cate=2">
+                    <a href="${pageContext.request.contextPath }/hotel/listpage?cate=2">
                       <div class="thumb">
                         <img src="../assets/images/pool.png" alt="">
                       </div>
@@ -86,7 +86,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                 </div>
                 <div class="col-lg-1">
                   <div>
-                    <a href="${pageContext.request.contextPath }/hotel/category?cate=3">
+                    <a href="${pageContext.request.contextPath }/hotel/listpage?cate=3">
                       <div class="thumb">
                         <img src="../assets/images/motel.png" alt="">
                       </div>
@@ -98,7 +98,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                 </div>
                 <div class="col-lg-1">
                   <div>
-                    <a href="${pageContext.request.contextPath }/hotel/category?cate=4">
+                    <a href="${pageContext.request.contextPath }/hotel/listpage?cate=4">
                       <div class="thumb">
                         <img src="../assets/images/guesthouse.png" alt="">
                       </div>
@@ -121,7 +121,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                   <h6 style="margin-bottom: 30px;"><i class="fa fa-check">최근 인기 HOTEL 미리 예약</i></h6>
                 </div>
                 <div class="owl-features owl-carousel">
-                  <c:forEach var="h" items="${list }">
+                  <c:forEach var="h" items="${list }" begin="0" end="6">
                   	<div class="item">
                       <div class="thumb">
                       	<a href="${pageContext.request.contextPath }/hotel/detail?num=${h.hotel_id}">
@@ -218,7 +218,7 @@ https://templatemo.com/tm-579-cyborg-gaming
               
               <div class="col-lg-12">
                 <div class="main-button">
-                  <a href="${pageContext.request.contextPath }/hotel/category?cate=0">더 보기</a>
+                  <a href="${pageContext.request.contextPath }/hotel/listpage">더 보기</a>
                 </div>
               </div>
             </div>

@@ -12,6 +12,22 @@
 		<result column="hotel_category" property="hotel_category" />
 		<result column="user_id" property="user_id" />
 	</resultMap>
+	
+	<sql id="search">
+		<if test="keyword != null and !keyword.equals('')">
+		and ( hotel_name like '%'||#{keyword}||'%'
+		  or hotel_addres like '%'||#{keyword}||'%' )
+		</if>
+	</sql>
+	<sql id="cate">
+		<if test="cate != null and !cate.equals('')">
+		and ( hotel_category=#{cate} )
+		</if>
+	</sql>
+	<sql id="limit">
+		and ( row_num between (#{pageNum}-1)*#{countPerPage}+1 and #{pageNum}*#{countPerPage} )
+	</sql>
+
 	<insert id="insert" parameterType="com.example.demo.hotel.Hotel">
 		insert into Hotel 
 		values(#{hotel_id}, #{hotel_name}, #{hotel_addres}, #{hotel_phone}, #{hotel_img}, #{hotel_category}, #{user_id}) 
@@ -25,17 +41,6 @@
 	<select id="selectByName" parameterType="String" 
 	resultMap="HotelResult">
 		select * from Hotel where hotel_name=#{hotel_name}  order by hotel_id
-	</select>
-	
-	<select id="selectByCategory" parameterType="int" 
-	resultMap="HotelResult">
-		select * from Hotel where hotel_category=#{hotel_category}  order by hotel_id
-	</select>
-	
-	<select id="selectByKeyword" parameterType="String" 
-	resultMap="HotelResult">
-		select * from Hotel where hotel_name like '%'||#{keyword}||'%'
-		or hotel_addres like '%'||#{keyword}||'%' order by hotel_id
 	</select>
 	
 	<select id="selectBySeller" parameterType="int" 
@@ -59,5 +64,28 @@
 	<select id="getNum" resultType="int">
 		select Hotel_seq.nextval from dual
 	</select>
+	
+	<select id="getTotal" parameterType="com.example.demo.hotel.PageVO" resultType="int">
+		SELECT COUNT(*)
+		FROM Hotel
+		where 1=1
+		<include refid="search" />
+	    <include refid="cate" />
+		order by hotel_id
+	</select>
+	
+	<select id="getHotelPaging" parameterType="com.example.demo.hotel.PageVO" resultMap="HotelResult">
+		select *
+		from (
+	     	select
+	     	  ROW_NUMBER() OVER(ORDER BY hotel_id) as row_num, h.*
+	     	from Hotel h
+	     	where 1=1
+	     	<include refid="search" />
+	     	<include refid="cate" />
+     	)
+     	where 1=1
+     	<include refid="limit" />
+     </select>
 
 </mapper>

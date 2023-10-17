@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -13,7 +14,9 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -82,25 +85,27 @@ public class HotelController {
 		return mav;
 	}
 	
-	@RequestMapping("/hotel/category")
-	public ModelAndView hotelCategory(int cate) {
+	@RequestMapping("/hotel/listpage")
+	public String listpage(Model model, PageVO vo) {
 		
-		ModelAndView mav = new ModelAndView("hotel/category");
+		System.out.println(vo);
 		
-		if(cate==0) {
-			ArrayList<Hotel> catelist = (ArrayList<Hotel>) service.getHotelAll();
-			mav.addObject("catelist", catelist);
-			mav.addObject("cate",cate);
-			return mav;
-		}
+		PageCreate pc = new PageCreate();
+		pc.setPaging(vo);
+		pc.setArticleTotalCount(service.getTotal(vo));
 		
-		ArrayList<Hotel> catelist = (ArrayList<Hotel>) service.getHotelByCategory(cate);
-		mav.addObject("catelist", catelist);
-		mav.addObject("cate",cate);
+		System.out.println(pc);
 		
-		return mav;
+		List list = service.getHotelPaging(vo);
+		
+		System.out.println(list);
+		
+		model.addAttribute("catelist", list);
+		model.addAttribute("pc", pc);
+		
+		return "hotel/category";
 	}
-	
+
 	@RequestMapping(value="/hotel/add")
 	public String add(HttpServletRequest req, Hotel h) {
 		int num = service.getNum();
@@ -210,18 +215,6 @@ public class HotelController {
 		}
 
 		return result;
-	}
-	
-	@PostMapping("/hotel/search")
-	public ModelAndView search(String keyword) {
-		
-		ModelAndView mav = new ModelAndView("hotel/search");
-		
-		ArrayList<Hotel> searchlist = (ArrayList<Hotel>) service.getHotelByKeyword(keyword);
-				
-		mav.addObject("searchlist", searchlist);
-		
-		return mav;
 	}
 	
 }

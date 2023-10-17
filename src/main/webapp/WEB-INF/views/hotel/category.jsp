@@ -63,9 +63,6 @@ https://templatemo.com/tm-579-cyborg-gaming
               <div class="row">
                 <div class="col-lg-12 header-text">
                   <c:choose>
-                  	<c:when test="${cate == 0 }">
-                  	  <h2>HOTEL JAVA</h2>
-                  	</c:when>
                   	<c:when test="${cate == 1 }">
                   	  <h2>호텔/리조트</h2>
                   	</c:when>
@@ -78,6 +75,9 @@ https://templatemo.com/tm-579-cyborg-gaming
                   	<c:when test="${cate == 4 }">
                   	  <h2>게스트하우스</h2>
                   	</c:when>
+                  	<c:otherwise>
+                  	  <h2>HOTEL JAVA</h2>
+                  	</c:otherwise>
                   </c:choose>
                   
                 </div>
@@ -135,6 +135,36 @@ https://templatemo.com/tm-579-cyborg-gaming
 	                </div>
                 </c:forEach>
               </div>
+              
+              
+              <div class="paging">
+					<form action="<c:url value='/hotel/listpage' />" name="pageForm">
+	                        <div class="text-center clearfix">
+	                            <ul class="pagination" id="pagination">
+	                            	<c:if test="${pc.prev}">
+	                                	<li class="page-item "><a  class="page-link" href="#" data-pageNum="${pc.beginPage-1}">Prev</a></li>
+	                                </c:if>
+	                                
+	                                <c:forEach var="num" begin="${pc.beginPage}" end="${pc.endPage}">
+	                                	<li class="${pc.paging.pageNum == num ? 'age-item active' : ''}" page-item><a class="page-link" href="#" data-pageNum="${num}">${num}</a></li>
+	                                </c:forEach>
+	                                
+	                                <c:if test="${pc.next}">
+	                               		<li class="page-item"><a class="page-link" href="#" data-pageNum="${pc.endPage+1}">Next</a></li>
+	                                </c:if>
+	                            </ul>
+	                            
+	                            <!-- 페이지 관련 버튼을 클릭 시 같이 숨겨서 보낼 값 -->
+	                            <input type="hidden" name="pageNum" value="${pc.paging.pageNum}">
+	                            <input type="hidden" name="countPerPage" value="${pc.paging.countPerPage}">
+	                            <input type="hidden" name="keyword" value="${pc.paging.keyword}">
+	                            <input type="hidden" name="cate" value="${pc.paging.cate}">
+	                            
+	                        </div>
+                        </form>
+			</div>
+              
+              
             </div>
             <!-- ***** Details End ***** -->
           </div>
@@ -169,6 +199,17 @@ https://templatemo.com/tm-579-cyborg-gaming
     <script src="../assets/js/popup.js"></script>
     <script src="../assets/js/custom.js"></script>
     
+    
+    <script>
+    $('#pagination').on('click', 'a', function(e) {
+			e.preventDefault();
+			console.log($(this));
+			const value = $(this).data('pagenum');
+			console.log(value);
+			document.pageForm.pageNum.value = value;
+			document.pageForm.submit();
+		});
+    </script>
     
   </body>
 </html>
