@@ -51,9 +51,11 @@ public class UsersController {
 	}
 
 	@RequestMapping(value = "/users/join")
-	public String join(Users u) {
+	public ModelAndView join(Users u) {
+		ModelAndView mav = new ModelAndView("users/loginForm");
 		service.addUsers(u);
-		return "users/loginForm";
+		mav.addObject("success", "회원가입완료");
+		return mav;
 	}
 
 	@RequestMapping(value = "/users/login")

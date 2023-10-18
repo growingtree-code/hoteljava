@@ -48,11 +48,6 @@ https://templatemo.com/tm-579-cyborg-gaming
   </div>
   <!-- ***** Preloader End ***** -->
 
-  <!-- ***** Header Area Start ***** -->
-<%--  index에서 불러올때 겹쳐 임시로 주석처리--%>
-<%--    <%@ include file="../nav.jsp" %>--%>
-  <!-- ***** Header Area End ***** -->
-
   <div class="container">
     <div class="row">
       <div class="col-lg-12">

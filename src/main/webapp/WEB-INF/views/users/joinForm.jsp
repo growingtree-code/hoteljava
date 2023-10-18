@@ -31,10 +31,21 @@
 		  });
 		});
 		$("#join").click(function() {
-			if($("#idResult").text().trim()=="사용가능한 이메일입니다."){
-				$("form").submit();
-			}else{
-				alert("이메일 중복체크 먼저진행해주세요");
+			var emailValue = $("#email").val().trim();
+
+			if (emailValue === "") {
+				if (confirm("이메일 주소를 입력해주세요")) {
+					window.location.reload();
+				}
+			} else {
+				if($("#idResult").text().trim()=="사용가능한 이메일입니다."){
+					if (confirm("계속 진행하시겠습니까?")) {
+						window.location.href = $(this).attr("href");
+					}
+					$("#join_btn").submit();
+				}else{
+					alert("이메일 중복체크 먼저진행해주세요");
+				}
 			}
 		});
 	});
@@ -122,7 +133,7 @@
 														<a href="${pageContext.request.contextPath }/users/loginForm"style="font-weight: bold;margin-left: 55%; margin-right: 5%;">취소</a>
 													</div>
 													<div class="main-border-button" style="display: inline;">
-														<a href=" javascript:join_btn.submit();" style="font-weight: bold; margin-top: 30px">가입</a>
+														<a id="join" href="javascript:void(0);" style="font-weight: bold; margin-top: 30px">가입</a>
 													</div>
 												</div>
 											</div>

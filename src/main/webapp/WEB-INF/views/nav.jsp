@@ -65,6 +65,15 @@ https://templatemo.com/tm-579-cyborg-gaming
         // document.getElementsByClassName("dropbtn").href = "";
       }
 
+      $(document).ready(function() {
+          $("#con").click(function(event) {
+              event.preventDefault(); // 기본 링크 동작을 중지
+
+              if (confirm("계속 진행하시겠습니까?")) {
+                  window.location.href = $(this).attr("href");
+              }
+          });
+      });
     </script>
 
   </head>
@@ -113,7 +122,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                                 <a href="${pageContext.request.contextPath }/myOrder">내 주문 내역</a>
                                 <a href="${pageContext.request.contextPath }/MyCart">내 장바구니</a>
                                 <c:if test="${sessionScope.type!=0}">
-                                    <a href="${pageContext.request.contextPath }/users/out?email=${sessionScope.email}">탈퇴</a>
+                                    <a id ="con" href="${pageContext.request.contextPath }/users/out?email=${sessionScope.email}">탈퇴</a>
                                 </c:if>
                             </div>
                         </c:when>

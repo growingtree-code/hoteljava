@@ -31,16 +31,6 @@
     />
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script>
-      window.onscroll = function() {
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-          document.getElementById("scrollTopButton").style.display = "block";
-          document.getElementById("scrollDownButton").style.display = "block";
-        } else {
-          document.getElementById("scrollTopButton").style.display = "none";
-          document.getElementById("scrollDownButton").style.display = "none";
-        }
-      };
-
       $(document).ready(function() {
         $("#scrollTopButton").click(function(e) {
           document.body.scrollTop = 0; // For Safari
@@ -60,8 +50,6 @@
     <!-- ***** Header Area End ***** -->
 
     <div class="container">
-      <button id="scrollTopButton" onclick="scrollTop()">&#9650;</button>
-      <button id="scrollDownButton" onclick="scrollDownButton()">&#9660;</button>
       <div class="row">
         <div class="col-lg-12">
           <div class="page-content">
@@ -100,13 +88,14 @@
             <!-- ***** Most Popular Start ***** -->
             <div id="top">
               <c:import url="http://localhost:8081/hotel/hotelList"/>
-<%--                <%@ include file="hotel/hotelList.jsp" %>--%>
             </div>
             <!-- ***** Most Popular End ***** -->
 
           </div>
         </div>
       </div>
+      <button id="scrollTopButton" onclick="scrollTop()">&#9650;</button>
+      <button id="scrollDownButton" onclick="scrollDownButton()">&#9660;</button>
     </div>
 
     <!-- Scripts -->
@@ -126,7 +115,7 @@
   }
 
   #scrollTopButton {
-    display: none;
+    display: block;
     position: fixed;
     bottom: 80px;
     right: 20px;
@@ -147,7 +136,7 @@
     background-color: #744285;
   }
   #scrollDownButton {
-    display: none;
+    display: block;
     position: fixed;
     bottom: 20px;
     right: 20px;
