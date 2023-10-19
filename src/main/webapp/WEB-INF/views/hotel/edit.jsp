@@ -131,7 +131,7 @@
             <div class="heading-section" style="display: flex; justify-content: space-around;">
               <h4>호텔 관리</h4>
             </div>
-            <div class="row">
+            <div class="row" style="margin-bottom: 20px;">
               <div class="col-lg-12">
                 <form
                   action="${pageContext.request.contextPath }/hotel/update"
@@ -220,7 +220,7 @@
             </div>
             
             
-            <div class="row" id="roomcontainer" style="display: none;">
+            <div class="row" id="roomcontainer" style="display: none; margin-bottom: 20px;">
               <div class="col-lg-12">
                 <form
                   action="${pageContext.request.contextPath }/room/update"
