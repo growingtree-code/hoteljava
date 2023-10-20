@@ -20,4 +20,16 @@ public class CommentsController {
         service.addComment(c);
         return "redirect:/myOrder";
     }
+
+    @RequestMapping(value = "/comments/cmtForm")
+    public String cmtForm(HttpServletRequest req,@RequestParam int user_id,@RequestParam int room_id){
+
+        HttpSession session = req.getSession();
+        session.setAttribute("ui",user_id);
+        session.setAttribute("ri",room_id);
+
+        System.out.println(user_id);
+        System.out.println(room_id);
+        return "comments/cmtForm";
+    }
 }

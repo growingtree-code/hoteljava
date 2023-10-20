@@ -29,11 +29,25 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
     $(document).ready(function() {
+        $("#div_review").hide();
+
+        // $("#show_form").click(function() {
+        //     $("#div_review").toggle();
+        // });
+
         $("#review-button a").click(function() {
             $("#current-date").val(new Date());
             $("#content").val($("#comment-textarea").val());
 
-            $("#comment-form1").submit();
+            $("#comment-form").submit();
+        });
+
+        $(".review-toggle").click(function() {
+            // data-room-id 속성을 사용하여 방 ID 값을 읽음
+            var roomId = $(this).data("room-id");
+
+            // roomId을 사용하여 해당 방에 대한 작업 수행
+            console.log("방 ID: " + roomId);
         });
     });
 
@@ -82,13 +96,12 @@
                                             <h4>객실명: ${ohr.room_name}</h4>
                                             <h4>예약 금액: ${ohr.order_price}원</h4>
                                             <p>호텔 전화번호: ${ohr.hotel_phone}</p>
-
-
-                                            <div class="main-border-button">
-
+                                            <div class="main-button" style="display: inline-block">
+                                                <a href="${pageContext.request.contextPath }/hotel/detail?num=${ohr.hotel_id}">호텔 다시보기</a>
                                             </div>
-                                            <div class="main-border-button">
-
+                                            <div id="show_form" class="main-border-button" style="display: inline-block">
+<%--                                                <a href="javascript:void(0);"class="review-toggle" data-room-id="${ohr.room_id}">리뷰쓰기</a>--%>
+                                                <a href="${pageContext.request.contextPath }/comments/cmtForm?user_id=${ohr.user_id}&room_id=${ohr.room_id}" class="review-toggle" data-room-id="${ohr.room_id}">리뷰쓰기</a>
                                             </div>
                                             <div class="main-button">
                                                 <a href="${pageContext.request.contextPath }/hotel/detail?num=${ohr.hotel_id}">호텔 다시보기</a>
@@ -106,22 +119,23 @@
                                     </div>
 
                                     <div class="col-lg-4 align-self-center ">
-                                        <div class="">
+                                        <div id ="div_review">
                                             <%--댓글 달기--%>
-                                        <form id="comment-form1" method="post" action="${pageContext.request.contextPath }/comments/add">
-                                            <input type="hidden" name="user_id" value="${ohr.user_id}">
-                                            <input type="hidden" name="room_id2" value="${ohr.room_id}">
-                                            <textarea id="comment-textarea" name="content" placeholder="재밌는 여행 되셨나요?&#13;&#10;소중한 후기를 남겨주세요!!"></textarea>
-                                            <input type="hidden" id="current-date" name="comment_date">
-                                            <div id="review-button" class="main-button"  >
-                                                <a href="javascript:void(0);">리뷰를 남겨보세요</a>
-                                            </div>
-                                        </form>
+                                            <form id="comment-form" method="post" action="${pageContext.request.contextPath }/comments/add">
+                                                <input type="hidden" name="user_id" value="${ohr.user_id}">
+                                                <input type="hidden" name="room_id2" value="${ohr.room_id}">
+                                                <textarea id="comment-textarea" name="content" placeholder="재밌는 여행 되셨나요?&#13;&#10;소중한 후기를 남겨주세요!!"></textarea>
+                                                <input type="hidden" id="current-date" name="comment_date">
+                                                <div id="review-button" class="main-button"  >
+                                                    <a href="javascript:void(0);">리뷰를 남겨보세요</a>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
                             </form>
                                     <hr>
+                                </div>
                                 </c:forEach>
 
                         </div>

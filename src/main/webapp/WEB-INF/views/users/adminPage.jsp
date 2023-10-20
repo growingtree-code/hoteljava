@@ -97,8 +97,8 @@
 																		<td>판매자도 구매자도 아님</td>
 																	</c:otherwise>
 																</c:choose>
-																<td><a href="${pageContext.request.contextPath }/users/editForm?email=${users.email}">정보수정</a></td>
-																<td><a href="${pageContext.request.contextPath }/users/out?email=${users.email}">회원삭제</a></td>
+																<td><a href="${pageContext.request.contextPath }/users/editForm?email=${users.email}" style="background-color: #ec6090;padding: 3px; border-radius: 10px">정보수정</a></td>
+																<td><a href="${pageContext.request.contextPath }/users/out?email=${users.email}" style="background-color:#744285; padding: 3px; border-radius: 10px">회원삭제</a></td>
 															</tr>
 														</c:forEach>
 
