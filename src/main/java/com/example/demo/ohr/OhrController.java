@@ -19,7 +19,6 @@ public class OhrController {
     private  OhrService ohrService;
     @RequestMapping("/myOrder")
     public String myOrderList(HttpServletRequest request) {
-//        ModelAndView mav = new ModelAndView("order/MyOrderList");
         HttpSession session = request.getSession();
         String email = (String)session.getAttribute("email");
         int userId = usersService.searchUserIdByEmail(email);
@@ -29,7 +28,6 @@ public class OhrController {
     }
     @RequestMapping("/MyCart")
     public String myCartList(HttpServletRequest request) {
-//        ModelAndView mav = new ModelAndView("order/MyOrderList");
         HttpSession session = request.getSession();
         String email = (String)session.getAttribute("email");
         int userId = usersService.searchUserIdByEmail(email);

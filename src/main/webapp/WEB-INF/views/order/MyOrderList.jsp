@@ -79,8 +79,8 @@
                                     <div class="col-lg-4 align-self-center">
                                         <div class="main-info header-text">
                                             <span>${ohr.hotel_name}</span>
-                                            <h4>${ohr.room_id}</h4>
-                                            <h4>${ohr.order_price}</h4>
+                                            <h4>${ohr.room_name}</h4>
+                                            <h4>${ohr.order_price}원</h4>
                                             <p>호텔 전화번호: ${ohr.hotel_phone}</p>
 
 
@@ -153,7 +153,23 @@
 <script src="assets/js/tabs.js"></script>
 <script src="assets/js/popup.js"></script>
 <script src="assets/js/custom.js"></script>
-
+<style>
+    textarea {
+        width: 100%;
+        height: 200px;
+        padding: 10px;
+        box-sizing: border-box;
+        border: solid 2px #E75E8C;
+        border-radius: 5px;
+        font-size: 16px;
+        resize: none;
+        background-color: #26292A;
+        color: #ffffff;
+    }
+    textarea:focus {
+        outline: none;
+    }
+</style>
 
 </body>
 
