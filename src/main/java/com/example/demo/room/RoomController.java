@@ -103,7 +103,7 @@ public class RoomController {
 		r.setRoom_img(filename);
 		service.addRoom(r);
 		System.out.println(r);
-		return "redirect:/hotel/hotelList";
+		return "index";
 	}
 	
 //	@RequestMapping(value="/hotel/detail")

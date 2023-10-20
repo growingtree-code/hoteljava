@@ -121,7 +121,7 @@ public class HotelController {
 		
 		service.addHotel(h);
 		System.out.println(h);
-		return "redirect:hotelList";
+		return "index";
 	}
 	
 	@RequestMapping(value="/hotel/edit")

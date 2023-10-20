@@ -45,6 +45,20 @@
   </head>
 
   <body>
+  
+  	  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
+ 
     <!-- ***** Header Area Start ***** -->
     <%@ include file="nav.jsp" %>
     <!-- ***** Header Area End ***** -->
@@ -67,7 +81,7 @@
                         <h6>Hotel JAVA에 오신 것을 환영합니다</h6>
                         <h4><em>Browse</em> Our Popular Hotels & Rooms Here</h4>
                         <div class="main-button">
-                          <a href="../hotel/hotelList">호텔 목록</a>
+                          <a href="../hotel/listpage">호텔 목록</a>
                         </div>
                       </div>
                     </div>
@@ -86,9 +100,7 @@
             </c:if>
 
             <!-- ***** Most Popular Start ***** -->
-            <div id="top">
               <c:import url="http://localhost:8081/hotel/hotelList"/>
-            </div>
             <!-- ***** Most Popular End ***** -->
 
           </div>

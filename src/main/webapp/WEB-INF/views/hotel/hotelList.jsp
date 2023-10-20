@@ -35,23 +35,6 @@ https://templatemo.com/tm-579-cyborg-gaming
 
 <body>
 
-  <!-- ***** Preloader Start ***** -->
-  <div id="js-preloader" class="js-preloader">
-    <div class="preloader-inner">
-      <span class="dot"></span>
-      <div class="dots">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </div>
-  <!-- ***** Preloader End ***** -->
-
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="page-content">
           <!-- ***** Category Start ***** -->
           <div class="live-stream" style="padding:15px; margin: 0 0 60px 0;">
             <div class="row justify-content-evenly">
@@ -159,7 +142,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                     <li>
                       <span>0${vs.count }</span>
                       <img src="${pageContext.request.contextPath }/hotel/img?filename=${h.hotel_img}&num=${h.hotel_id}" alt="" style="width: 46px; height: 46px; border-radius: 50%; margin-right: 15px;">
-                      <h6 style="display:inline-block; width:115px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><i class="fa fa-check"></i> ${h.hotel_name}</h6>
+                      <h6 style="display:inline-block; width:110px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><i class="fa fa-check"></i> ${h.hotel_name}</h6>
                       <div class="main-button">
                         <a href="${pageContext.request.contextPath }/hotel/detail?num=${h.hotel_id}">살펴보기</a>
                       </div>
@@ -220,17 +203,13 @@ https://templatemo.com/tm-579-cyborg-gaming
           </div>
           <!-- ***** Live Stream End ***** -->
 
-        </div>
-      </div>
-    </div>
-  </div>
+
 
   <!-- Scripts -->
   <!-- Bootstrap core JavaScript -->
   <script src="../vendor/jquery/jquery.min.js"></script>
   <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
 
-  <script src="../assets/js/isotope.min.js"></script>
   <script src="../assets/js/owl-carousel.js"></script>
   <script src="../assets/js/tabs.js"></script>
   <script src="../assets/js/popup.js"></script>

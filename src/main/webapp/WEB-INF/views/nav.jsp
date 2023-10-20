@@ -101,7 +101,7 @@ https://templatemo.com/tm-579-cyborg-gaming
               <!-- ***** Menu Start ***** -->
               <ul class="nav">
                 <li><a href="${pageContext.request.contextPath }/index" class="active">Home</a></li>
-                <li><a href="../hotel/hotelList">호텔 목록</a></li>
+                <li><a href="../hotel/listpage">호텔 목록</a></li>
 <%--                <li><a href="${pageContext.request.contextPath }/browse">Browse</a></li>--%>
 <%--                <li><a href="${pageContext.request.contextPath }/details">Details</a></li>--%>
 <%--                <li><a href="${pageContext.request.contextPath }/streams">Streams</a></li>--%>
