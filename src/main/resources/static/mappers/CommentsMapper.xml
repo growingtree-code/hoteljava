@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.comment.CommentsMapper">
+
+    <resultMap id="CommentsResult" type="com.example.demo.comment.Comments">
+        <result column="comment_id" property="comment_id" />
+        <result column="user_id2" property="user_id" />
+        <result column="room_id2" property="room_id2" />
+        <result column="content" property="content" />
+        <result column="comment_date" property="comment_date" />
+    </resultMap>
+
+    <insert id="insert" parameterType="com.example.demo.comment.Comments">
+        insert into Comments values(Comments_seq.NEXTVAL,#{user_id}, #{room_id2}, #{content}, #{comment_date})
+    </insert>
+
+</mapper>

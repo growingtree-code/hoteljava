@@ -1,3 +1,5 @@
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.sql.Date" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -26,6 +28,40 @@
     <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
 
 </head>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // $("#comment-form").hide();
+
+        $("#review-button a").click(function() {
+            // $("#comment-form").toggle(); // 댓글 폼 표시/숨기기
+            var currentDate = new Date();
+
+            // 날짜를 "yyyy-MM-dd" 형식의 문자열로 변환
+            var formattedDate = currentDate.toISOString().slice(0,10);
+
+            // 폼의 숨겨진 입력 필드에 현재 날짜 설정
+            // $("#current-date").val(formattedDate);
+            $("#current-date").val(new Date());
+            $("#content").val($("#comment-textarea").val());
+
+            // 폼 제출
+            $("#comment-form1").submit();
+            // console.log( $("#current-date").val(formattedDate));
+        });
+
+        //테스트용
+        $("#display-button").click(function() {
+            var textAreaContent = $("#comment-textarea").val(); // <textarea>의 내용 가져오기
+            $("#output-div").text(textAreaContent); // <div> 태그에 내용 출력
+        });
+
+
+    });
+
+</script>
+
+
 
 <body>
 
@@ -60,7 +96,6 @@
                             </div>
 
                                 <c:forEach var="ohr" items="${ohr }">
-                                    <form>
                                 <div class="row">
 
                                     <div class="col-lg-4">
@@ -83,6 +118,38 @@
                                             <div class="main-button">
                                                 <a href="${pageContext.request.contextPath }/hotel/detail?num=${ohr.hotel_id}">호텔 다시보기</a>
                                             </div>
+                                            <%--댓글 달기--%>
+                                            <%
+                                                java.util.Date currentDate = new java.util.Date();
+                                                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                                                String formattedDate = dateFormat.format(currentDate);
+                                            %>
+                                            <form id="comment-form1" method="post" action="${pageContext.request.contextPath }/comments/add
+<%--                                            ?comment_date=<%=formattedDate %>--%>
+                                            ">
+                                                <input type="hidden" name="user_id" value="${ohr.user_id}">
+                                                <input type="hidden" name="room_id2" value="${ohr.room_id}">
+                                                    <textarea id="comment-textarea" name="content"></textarea>
+<%--                                                <input type="hidden" id="current-date" name="comment_date" value="<%= formattedDate %>">--%>
+                                                <input type="hidden" id="current-date" name="comment_date">
+<%--                                                <div>현재 날짜: <%= formattedDate %></div>--%>
+                                                <div id="review-button" class="main-button"  >
+                                                    <a href="javascript:void(0);">리뷰</a>
+                                                </div>
+                                            </form>
+<%--                                            <div style="background-color: white;color: black">--%>
+<%--                                                ohr.user_id  ${ohr.user_id}--%>
+<%--                                                ohr.room_id   ${ohr.room_id}--%>
+<%--                                                <div id="output-div"></div>--%>
+
+<%--                                                <button id="display-button">내용 표시</button>--%>
+<%--                                                <%--%>
+<%--                                                    java.util.Date currentDate = new java.util.Date();--%>
+<%--                                                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");--%>
+<%--                                                    String formattedDate = dateFormat.format(currentDate);--%>
+<%--                                                %>--%>
+<%--                                                <div>현재 날짜: <%= formattedDate %></div>--%>
+<%--                                            </div>--%>
                                         </div>
                                     </div>
                                     <div class="col-lg-4 align-self-center">
