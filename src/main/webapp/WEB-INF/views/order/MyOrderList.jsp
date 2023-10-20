@@ -81,7 +81,7 @@
                                             <span>${ohr.hotel_name}</span>
                                             <h4>${ohr.room_id}</h4>
                                             <h4>${ohr.order_price}</h4>
-                                            <p>호텔 번호: ${ohr.hotel_phone}</p>
+                                            <p>호텔 전화번호: ${ohr.hotel_phone}</p>
 
 
                                             <div class="main-border-button">
@@ -107,8 +107,8 @@
                                     </div>
                                     <div class="col-lg-4 align-self-center">
                                         <ul>
-                                            <li>체크인 <span><fmt:formatDate value="${ohr.order_start_date}" pattern="yyyy-MM-dd" /></span></li>
-                                            <li>체크아웃 <span><fmt:formatDate value="${ohr.order_end_date}" pattern="yyyy-MM-dd" /></span></li>
+                                            <li>체크인 <span><fmt:formatDate value="${ohr.order_start_date}" pattern="yyyy/MM/dd" /></span></li>
+                                            <li>체크아웃 <span><fmt:formatDate value="${ohr.order_end_date}" pattern="yyyy/MM/dd" /></span></li>
                                             <li>숙박일<span  id="period">${ohr.order_period}박</span></li>
                                             <li>인원 수<span>${ohr.room_type}</span></li>
                                         </ul>

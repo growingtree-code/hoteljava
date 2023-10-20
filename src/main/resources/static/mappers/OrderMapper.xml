@@ -19,8 +19,7 @@
 
 	<insert id="insertOrder" parameterType="com.example.demo.order.Order">
 		insert into Orders
-		values(Orders_seq.nextval, #{payment_id},#{hotel_id}, #{user_id}, #{room_id2}, #{order_start_date},
-			   #{order_end_date}, #{order_period}, #{order_price}, #{order_state})
+		values(Orders_seq.nextval, #{payment_id},#{hotel_id}, #{user_id}, #{room_id2}, #{order_start_date},#{order_end_date}, #{order_period}, #{order_price}, #{order_state})
 	</insert>
 
 	<select id="selectByOrderId" parameterType="int"

@@ -42,7 +42,7 @@
         FROM Orders o
                  JOIN Hotel h ON o.hotel_id = h.hotel_id
                  JOIN Room r ON o.room_id2 = r.room_id
-        WHERE o.user_id = #{user_id} AND o.order_state = 1
+        WHERE o.user_id = #{user_id} AND o.order_state = 1 order by order_id desc
     </select>
     <select id="selectCartAllOHRByUserId" resultMap="OHRResult">
         SELECT o.*,
@@ -60,6 +60,6 @@
         FROM Orders o
                  JOIN Hotel h ON o.hotel_id = h.hotel_id
                  JOIN Room r ON o.room_id2 = r.room_id
-        WHERE o.user_id = #{user_id} AND o.order_state = 0
+        WHERE o.user_id = #{user_id} AND o.order_state = 0 order by order_id desc
     </select>
 </mapper>

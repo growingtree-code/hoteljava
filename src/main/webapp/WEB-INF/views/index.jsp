@@ -100,7 +100,7 @@
             </c:if>
 
             <!-- ***** Most Popular Start ***** -->
-              <c:import url="http://localhost:8081/hotel/hotelList"/>
+              <c:import url="http://localhost:8080/hotel/hotelList"/>
             <!-- ***** Most Popular End ***** -->
 
           </div>

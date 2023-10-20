@@ -12,6 +12,7 @@ import com.example.demo.room.RoomService;
 import com.example.demo.users.Users;
 import com.example.demo.users.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -75,31 +76,8 @@ public class OrderController {
 
     @RequestMapping(value = "/saveToMyCart")
     public String myCart(HttpServletRequest request,
-                         @RequestParam Object order_start_date,
-                         @RequestParam Object order_end_date,
-                         @RequestParam int order_period,
-                         @RequestParam int order_price,
-                         @RequestParam int hotel_id,
-                         @RequestParam int room_id2,
-                         @RequestParam int user_id
-                         ) throws ParseException {
+                         Order order) throws ParseException {
 
-//        HttpSession session = request.getSession();
-//        Payment payment = (Payment) session.getAttribute("payment");
-//        int paymentId = paymentService.searchPaymentIdByPaymentUid(payment.getPayment_uid());
-
-        Date orderStartDate = new SimpleDateFormat("yyyy-MM-dd").parse(String.valueOf(order_start_date));
-        Date orderEndDate = new SimpleDateFormat("yyyy-MM-dd").parse(String.valueOf(order_end_date));
-
-        Order order = new Order();
-//        order.setPayment_id(paymentId);
-        order.setOrder_period(order_period);
-        order.setOrder_price(order_price);
-        order.setOrder_start_date(orderStartDate);
-        order.setOrder_end_date(orderEndDate);
-        order.setRoom_id2(room_id2);
-        order.setUser_id(user_id);
-        order.setHotel_id(hotel_id);
         //결제 필요
         order.setOrder_state(0);
         System.out.println(order);
@@ -112,66 +90,26 @@ public class OrderController {
 
     @PostMapping(value = "/ReservationUpdate")
     public String ReservationUpdate(HttpServletRequest request,
-                                  @RequestParam Object order_start_date,
-                                  @RequestParam Object order_end_date,
-                                  @RequestParam int order_period,
-                                  @RequestParam int order_price,
-                                  @RequestParam int hotel_id,
-                                  @RequestParam int room_id2,
-                                  @RequestParam int user_id,
-                                  @RequestParam int order_id
-                                  ) throws ParseException {
+                                 Order order) throws ParseException {
 
         HttpSession session = request.getSession();
         Payment payment = (Payment) session.getAttribute("payment");
         int paymentId = paymentService.searchPaymentIdByPaymentUid(payment.getPayment_uid());
-
-        Date orderStartDate = new SimpleDateFormat("yyyy-MM-dd").parse(String.valueOf(order_start_date));
-        Date orderEndDate = new SimpleDateFormat("yyyy-MM-dd").parse(String.valueOf(order_end_date));
-
-        Order order = new Order();
-        //payment 0
-        order.setOrder_id(order_id);
         order.setPayment_id(paymentId);
-        order.setOrder_period(order_period);
-        order.setOrder_price(order_price);
-        order.setOrder_start_date(orderStartDate);
-        order.setOrder_end_date(orderEndDate);
-        order.setRoom_id2(room_id2);
-        order.setUser_id(user_id);
-        order.setHotel_id(hotel_id);
+
         //결제 완료 1
         order.setOrder_state(1);
         orderService.updateByOrderId(order);
 
         return "redirect:/myOrder";
     }
-
-    @PostMapping(value = "/DoSave")
-    public String saveReservation(HttpServletRequest request,
-                                  @RequestParam Object order_start_date,
-                                  @RequestParam Object order_end_date,
-                                  @RequestParam int order_period,
-                                  @RequestParam int order_price,
-                                  @RequestParam int room_id2,
-                                  @RequestParam int user_id,
-                                  @RequestParam int hotel_id) throws ParseException {
+    @RequestMapping(value = "/DoSave")
+    public String saveReservation(HttpServletRequest request, Order order) throws ParseException {
         HttpSession session = request.getSession();
         Payment payment = (Payment) session.getAttribute("payment");
         int paymentId = paymentService.searchPaymentIdByPaymentUid(payment.getPayment_uid());
-
-        Date orderStartDate = new SimpleDateFormat("yyyy-MM-dd").parse(String.valueOf(order_start_date));
-        Date orderEndDate = new SimpleDateFormat("yyyy-MM-dd").parse(String.valueOf(order_end_date));
-
-        Order order = new Order();
-        order.setHotel_id(hotel_id);
         order.setPayment_id(paymentId);
-        order.setOrder_period(order_period);
-        order.setOrder_price(order_price);
-        order.setOrder_start_date(orderStartDate);
-        order.setOrder_end_date(orderEndDate);
-        order.setRoom_id2(room_id2);
-        order.setUser_id(user_id);
+
         //결제 완료
         order.setOrder_state(1);
         System.out.println(order);

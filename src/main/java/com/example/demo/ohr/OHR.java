@@ -1,6 +1,7 @@
 package com.example.demo.ohr;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
@@ -12,7 +13,9 @@ public class OHR {
     private int hotel_id;
     private int user_id;
     private int room_id2;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date order_start_date;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date order_end_date;
     private int order_period;
     private int order_price;
