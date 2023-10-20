@@ -79,8 +79,8 @@
                                     <div class="col-lg-4 align-self-center">
                                         <div class="main-info header-text">
                                             <span>${ohr.hotel_name}</span>
-                                            <h4>${ohr.room_name}</h4>
-                                            <h4>${ohr.order_price}원</h4>
+                                            <h4>객실명: ${ohr.room_name}</h4>
+                                            <h4>예약 금액: ${ohr.order_price}원</h4>
                                             <p>호텔 전화번호: ${ohr.hotel_phone}</p>
 
 
@@ -93,16 +93,7 @@
                                             <div class="main-button">
                                                 <a href="${pageContext.request.contextPath }/hotel/detail?num=${ohr.hotel_id}">호텔 다시보기</a>
                                             </div>
-                                            <%--댓글 달기--%>
-                                            <form id="comment-form1" method="post" action="${pageContext.request.contextPath }/comments/add">
-                                                <input type="hidden" name="user_id" value="${ohr.user_id}">
-                                                <input type="hidden" name="room_id2" value="${ohr.room_id}">
-                                                    <textarea id="comment-textarea" name="content"></textarea>
-                                                <input type="hidden" id="current-date" name="comment_date">
-                                                <div id="review-button" class="main-button"  >
-                                                    <a href="javascript:void(0);">리뷰</a>
-                                                </div>
-                                            </form>
+
                                         </div>
                                     </div>
                                     <div class="col-lg-4 align-self-center">
@@ -113,9 +104,24 @@
                                             <li>인원 수<span>${ohr.room_type}</span></li>
                                         </ul>
                                     </div>
-                                    <hr>
+
+                                    <div class="col-lg-4 align-self-center ">
+                                        <div class="">
+                                            <%--댓글 달기--%>
+                                        <form id="comment-form1" method="post" action="${pageContext.request.contextPath }/comments/add">
+                                            <input type="hidden" name="user_id" value="${ohr.user_id}">
+                                            <input type="hidden" name="room_id2" value="${ohr.room_id}">
+                                            <textarea id="comment-textarea" name="content" placeholder="재밌는 여행 되셨나요?&#13;&#10;소중한 후기를 남겨주세요!!"></textarea>
+                                            <input type="hidden" id="current-date" name="comment_date">
+                                            <div id="review-button" class="main-button"  >
+                                                <a href="javascript:void(0);">리뷰를 남겨보세요</a>
+                                            </div>
+                                        </form>
+                                        </div>
+                                    </div>
                                 </div>
                             </form>
+                                    <hr>
                                 </c:forEach>
 
                         </div>
@@ -156,7 +162,7 @@
 <style>
     textarea {
         width: 100%;
-        height: 200px;
+        height: 100px;
         padding: 10px;
         box-sizing: border-box;
         border: solid 2px #E75E8C;
