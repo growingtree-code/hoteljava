@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.sql.Date;
 
 @Controller
 public class CommentsController {
@@ -18,12 +16,8 @@ public class CommentsController {
     private  CommentsService service;
 
     @RequestMapping(value = "/comments/add")
-    public String addCmt(Comments c) throws ParseException {
-        Date date = (Date) c.getComment_date();
-//        Date comment_date = new SimpleDateFormat("yyyy-MM-dd").parse(String.valueOf(date));
-        c.setComment_date(date);
+    public String addCmt(Comments c){
         service.addComment(c);
-
         return "redirect:/myOrder";
     }
 }
