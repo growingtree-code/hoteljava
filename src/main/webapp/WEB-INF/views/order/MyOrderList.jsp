@@ -100,11 +100,10 @@
                                                 <a href="${pageContext.request.contextPath }/hotel/detail?num=${ohr.hotel_id}">호텔 다시보기</a>
                                             </div>
                                             <div id="show_form" class="main-border-button" style="display: inline-block">
-<%--                                                <a href="javascript:void(0);"class="review-toggle" data-room-id="${ohr.room_id}">리뷰쓰기</a>--%>
                                                 <a href="${pageContext.request.contextPath }/comments/cmtForm?user_id=${ohr.user_id}&room_id=${ohr.room_id}" class="review-toggle" data-room-id="${ohr.room_id}">리뷰쓰기</a>
                                             </div>
                                             <div class="main-button">
-                                                <a href="${pageContext.request.contextPath }/hotel/detail?num=${ohr.hotel_id}">호텔 다시보기</a>
+
                                             </div>
 
                                         </div>
@@ -115,29 +114,16 @@
                                             <li>체크아웃 <span><fmt:formatDate value="${ohr.order_end_date}" pattern="yyyy/MM/dd" /></span></li>
                                             <li>숙박일<span  id="period">${ohr.order_period}박</span></li>
                                             <li>인원 수<span>${ohr.room_type}</span></li>
+
                                         </ul>
                                     </div>
 
-                                    <div class="col-lg-4 align-self-center ">
-                                        <div id ="div_review">
-                                            <%--댓글 달기--%>
-                                            <form id="comment-form" method="post" action="${pageContext.request.contextPath }/comments/add">
-                                                <input type="hidden" name="user_id" value="${ohr.user_id}">
-                                                <input type="hidden" name="room_id2" value="${ohr.room_id}">
-                                                <textarea id="comment-textarea" name="content" placeholder="재밌는 여행 되셨나요?&#13;&#10;소중한 후기를 남겨주세요!!"></textarea>
-                                                <input type="hidden" id="current-date" name="comment_date">
-                                                <div id="review-button" class="main-button"  >
-                                                    <a href="javascript:void(0);">리뷰를 남겨보세요</a>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
                                 </div>
                             </form>
                                     <hr>
-                                </div>
-                                </c:forEach>
 
+                                </c:forEach>
+                        </div>
                         </div>
 
                     </div>
@@ -173,23 +159,7 @@
 <script src="assets/js/tabs.js"></script>
 <script src="assets/js/popup.js"></script>
 <script src="assets/js/custom.js"></script>
-<style>
-    textarea {
-        width: 100%;
-        height: 100px;
-        padding: 10px;
-        box-sizing: border-box;
-        border: solid 2px #E75E8C;
-        border-radius: 5px;
-        font-size: 16px;
-        resize: none;
-        background-color: #26292A;
-        color: #ffffff;
-    }
-    textarea:focus {
-        outline: none;
-    }
-</style>
+
 
 </body>
 
