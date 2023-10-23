@@ -87,10 +87,10 @@
 																<td>${users.name}</td>
 																<td>${users.point}</td>
 																<c:choose>
-																	<c:when test="${users.type == 1}">
+																	<c:when test="${users.type == 2}">
 																		<td>판매자(${users.type})</td>
 																	</c:when>
-																	<c:when test="${users.type == 2}">
+																	<c:when test="${users.type == 1}">
 																		<td>구매자(${users.type})</td>
 																	</c:when>
 																	<c:otherwise>
