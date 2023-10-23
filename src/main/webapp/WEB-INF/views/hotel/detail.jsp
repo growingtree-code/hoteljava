@@ -87,7 +87,7 @@ https://templatemo.com/tm-579-cyborg-gaming
                   <h6 style="margin-bottom: 30px; text-align: center">${h.hotel_phone }</h6>
                 </div>
                 
-                <c:forEach items="${roomlist }" var="r">
+                <c:forEach items="${roomlist}" var="r">
 	                <div class="col-lg-6" style="margin-bottom: 10px;">
 	                  <div class="content">
 	                    <div class="row">
@@ -136,14 +136,19 @@ https://templatemo.com/tm-579-cyborg-gaming
 	                          style="border-radius: 23px; margin-bottom: 30px"
 	                        />
 	                      </div> -->
-	                      <div class="col-lg-12">
-	                        <p>
-	                          ${r.room_info }
-	                        </p>
-                              <p>
-                                      ${r.price }원
-                              </p>
-	                      </div>
+                            <div style="justify-content: space-between; display: flex;">
+                                  <div class="col-lg-12" style="display: inline-block; width: fit-content;">
+                                    <p>
+                                      ${r.room_info }
+                                    </p>
+                                      <p>
+                                              ${r.price }원
+                                      </p>
+                                  </div>
+                                    <div class="main-button" style="display: inline-block">
+                                        <a href="${pageContext.request.contextPath }/comments/cmtList?room_id2=${r.room_id}">리뷰 목록</a>
+                                    </div>
+                            </div>
 	                      <div class="col-lg-12">
 
 	                        <div class="main-border-button">

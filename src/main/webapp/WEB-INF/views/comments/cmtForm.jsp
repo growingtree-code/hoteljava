@@ -76,12 +76,41 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <form id="comment-form" method="post" action="${pageContext.request.contextPath }/comments/add">
-                            <input type="text" name="user_id" value="${sessionScope.ui}">
-                            <input type="text" name="room_id2" value="${sessionScope.ri}">
-                            <textarea id="comment-textarea" name="content"></textarea>
-                            <input type="hidden" id="current-date" name="comment_date">
-                            <div id="review-button" class="main-button">
-                                <a href="javascript:void(0);">전송</a>
+                            <div class="main-profile">
+                                <div class="row">
+
+                                    <div class="align-self-center">
+                                        <div class="main-info header-text">
+                                            <div class="item" style="display: flex; justify-content: space-around;">
+                                                <div class="col-lg-4">
+                                                    <img src="${pageContext.request.contextPath }/room/img?filename=${sessionScope.r.room_img}&num=${sessionScope.r.room_id}" alt="" style="border-radius: 23px; width: 30em;height: 25em;">
+                                                </div>
+                                                <ul style="display: inline-block">
+                                                    <li>
+                                                        <h5 style="display: inline-block; width: 10vw">작성자</h5>
+                                                        <input type="hidden" name="user_id" value="${sessionScope.ui}" style="color: #bbb; border: none; border-radius: 23px; background-color: #27292a">
+                                                        <input type="text" name="user_id" value="${sessionScope.name}" style="color: #bbb; border: none; border-radius: 23px; background-color: #27292a">
+                                                    </li>
+                                                    <li>
+                                                        <h5 style="display: inline-block; width: 10vw">객 실명</h5>
+                                                    <input type="hidden" name="room_id2" value="${sessionScope.ri}" style="color: #bbb; border: none; border-radius: 23px; background-color: #27292a">
+                                                    <input type="text" name="room_id2" value="${sessionScope.r.room_name}" style="color: #bbb; border: none; border-radius: 23px; background-color: #27292a">
+                                                    </li>
+                                                    <li>
+                                                        <h5 style="display: inline-block; width: 10vw">리뷰 내용</h5>
+                                                        <textarea id="comment-textarea" name="content" placeholder="재밌는 여행 되셨나요?&#13;&#10;소중한 후기를 남겨주세요!!"></textarea>
+                                                    </li>
+                                                    <input type="hidden" id="current-date" name="comment_date">
+                                                    <div id="review-button" class="main-button ">
+                                                        <a href="javascript:void(0);">작성 완료</a>
+                                                    </div>
+
+                                                </ul>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -101,5 +130,22 @@
 <script src="../assets/js/tabs.js"></script>
 <script src="../assets/js/popup.js"></script>
 <script src="../assets/js/custom.js"></script>
+<style>
+    textarea {
+        width: 100%;
+        height: 100px;
+        padding: 10px;
+        box-sizing: border-box;
+        border: solid 2px #E75E8C;
+        border-radius: 5px;
+        font-size: 16px;
+        resize: none;
+        background-color: #26292A;
+        color: #ffffff;
+    }
+    textarea:focus {
+        outline: none;
+    }
+</style>
 </body>
 </html>

@@ -17,6 +17,8 @@ public class UsersService {
 
 	public Users getUsers(String email) {return mapper.select(email);}
 
+	public Users getUsersbyId(int id) {return mapper.selectUserById(id);}
+
 	public List<Users> getListPaging(Page p){ return mapper.getListPaging(p);}
 
 	public int getTotal() {return mapper.getTotal();}
